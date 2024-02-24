@@ -26,6 +26,14 @@ void Scene::RemoveAll()
 	m_objects.clear();
 }
 
+void Scene::Fixed_Update()
+{
+	for (auto& object : m_objects)
+	{
+		object->Fixed_Update();
+	}
+}
+
 void Scene::Update()
 {
 	for(auto& object : m_objects)

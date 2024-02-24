@@ -5,6 +5,8 @@
 
 dae::GameObject::~GameObject() = default;
 
+void dae::GameObject::Fixed_Update(){}
+
 void dae::GameObject::Update(){}
 
 void dae::GameObject::Render() const

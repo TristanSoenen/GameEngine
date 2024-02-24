@@ -11,7 +11,7 @@ namespace dae
 	{
 	public:
 		Scene& CreateScene(const std::string& name);
-
+		void Fixed_Update();
 		void Update();
 		void Render();
 	private:
