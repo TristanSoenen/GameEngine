@@ -10,6 +10,6 @@ namespace dae
 		float GetDeltaTime() const;
 	private:
 		std::chrono::high_resolution_clock::time_point m_lastTime = std::chrono::high_resolution_clock::now();
-		float m_DeltaTime;
+		float m_DeltaTime = 0.0f;
 	};
 }
