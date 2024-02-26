@@ -9,6 +9,7 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
+#include "DeltaTime.h"
 #include <chrono>
 #include <thread>
 
@@ -84,6 +85,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& renderer = Renderer::GetInstance();
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
+	auto& time = DeltaTime::GetInstance();
 
 	// todo: this update loop could use some work.
 	bool doContinue = true;
@@ -94,23 +96,24 @@ void dae::Minigin::Run(const std::function<void()>& load)
 
 	while (doContinue)
 	{
-		const auto current_time = std::chrono::high_resolution_clock::now();
+		time.Update();
+		/*const auto current_time = std::chrono::high_resolution_clock::now();
 		const float delta_time = std::chrono::duration<float>(current_time - last_time).count();
-		last_time = current_time;
-		lag += delta_time;
+		last_time = current_time;*/
+		lag += time.GetDeltaTime();
 
 		doContinue = input.ProcessInput();
 
 		while (lag >= fixed_time_Step)
 		{
 			//fixed update voor physics
-			sceneManager.Fixed_Update(/*fixed_time_Step*/);
+			sceneManager.Fixed_Update();
 			lag -= fixed_time_Step;
 		}
-		sceneManager.Update(/*delta_time*/);
+		sceneManager.Update();
 		renderer.Render();
 
-		//const auto sleep_time = current_time + std::chrono::milliseconds(fixed_time_Step) - std::chrono::high_resolution_clock::now();
-		//std::this_thread::sleep_for(sleep_time);
+		const auto sleep_time = std::chrono::high_resolution_clock::now() + std::chrono::milliseconds(int(fixed_time_Step * 1000)) - std::chrono::high_resolution_clock::now();
+		std::this_thread::sleep_for(sleep_time);
 	}
 }
