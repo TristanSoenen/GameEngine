@@ -89,17 +89,12 @@ void dae::Minigin::Run(const std::function<void()>& load)
 
 	// todo: this update loop could use some work.
 	bool doContinue = true;
-
-	auto last_time = std::chrono::high_resolution_clock::now();
 	float lag = 0.0f;
 	const float fixed_time_Step = 1.0f / 60.0f;
 
 	while (doContinue)
 	{
 		time.Update();
-		/*const auto current_time = std::chrono::high_resolution_clock::now();
-		const float delta_time = std::chrono::duration<float>(current_time - last_time).count();
-		last_time = current_time;*/
 		lag += time.GetDeltaTime();
 
 		doContinue = input.ProcessInput();
