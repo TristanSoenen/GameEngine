@@ -1,15 +1,13 @@
 #pragma once
 #include <memory>
-#include "Component.h"
 #include "Transform.h"
-#include "vector"
+#include <vector>
+#include <string>
 
 namespace dae
 {
+	class Component;
 	class Texture2D;
-	//class Component;
-
-	
 	// todo: this should become final.
 	class GameObject
 	{
@@ -19,13 +17,17 @@ namespace dae
 		virtual void Update();
 		virtual void Render() const;
 
-		void AddComponent(std::unique_ptr<Component> component);
-		void RemoveComponent(std::unique_ptr<Component> component);
+		void AddComponent(std::shared_ptr<Component> component);
+		void RemoveComponent(std::shared_ptr<Component> component);
 		//Component* GetComponent();
-		
-		bool HasComponentBeenAdded(std::unique_ptr<Component> component);
-
-
+		//template <typename T> Component* GetComponent(T)
+		//{
+		//	
+		//	//std::find(T)
+		//	return T;
+		//}
+		bool HasComponentBeenAdded(std::shared_ptr<Component> component);
+		//void SetParent(GameObject* parent, bool keepWorldPosition);
 		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
 
@@ -37,7 +39,7 @@ namespace dae
 		GameObject& operator=(GameObject&& other) = delete;
 
 	private:
-		std::vector<std::unique_ptr<Component>> m_Components;
+		std::vector<std::shared_ptr<dae::Component>> m_Components;
 		
 		//these can be components
 		Transform m_transform{};

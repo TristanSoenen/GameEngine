@@ -1,11 +1,14 @@
 #pragma once
+//#include "GameObject.h"
+#include <memory>
 
 namespace dae
 {
+	class GameObject;
+
 	class Component
 	{
 	public:
-		Component() = default;
 		virtual ~Component() = default;
 		Component(const Component& other) = delete;
 		Component(Component&& other) = delete;
@@ -16,10 +19,11 @@ namespace dae
 		virtual void Update() {};
 		virtual void Render() {};
 
-	//protected:
-		//GameObject* GetOwner() const { return m_pOwner; }
+	protected:
+		explicit Component(GameObject* pOwner) : m_pOwner(pOwner) {};
+		GameObject* GetOwner() const { return m_pOwner; }
 	private:
-		//GameObject* m_pOwner;
+		GameObject* m_pOwner;
 	};
 }
 

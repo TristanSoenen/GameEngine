@@ -45,22 +45,18 @@ void dae::GameObject::SetPosition(float x, float y)
 	m_transform.SetPosition(x, y, 0.0f);
 }
 
-void dae::GameObject::AddComponent(std::unique_ptr<Component> component)
+void dae::GameObject::AddComponent(std::shared_ptr<dae::Component> component)
 {
 	m_Components.emplace_back(std::move(component));
 }
 
-void dae::GameObject::RemoveComponent(std::unique_ptr<Component> component)
+void dae::GameObject::RemoveComponent(std::shared_ptr<dae::Component> component)
 {
-	m_Components.erase(std::remove(m_Components.begin(), m_Components.end(), component));
+	m_Components.erase(std::remove(m_Components.begin(), m_Components.end(), component), m_Components.end());
 }
 
-//dae::Component* dae::GameObject::GetComponent()
-//{
-//	//return 
-//}
 
-bool dae::GameObject::HasComponentBeenAdded(std::unique_ptr<Component> component)
+bool dae::GameObject::HasComponentBeenAdded(std::shared_ptr<dae::Component> component)
 {
 	if (std::find(m_Components.begin(), m_Components.end(), component) != m_Components.end())
 	{
@@ -68,3 +64,8 @@ bool dae::GameObject::HasComponentBeenAdded(std::unique_ptr<Component> component
 	}
 	return false;
 }
+
+//void dae::GameObject::SetParent(GameObject* parent, bool keepWorldPosition)
+//{
+//	
+//}
