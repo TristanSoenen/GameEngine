@@ -1,12 +1,13 @@
 #include "FPSComponent.h"
+#include "GameObject.h"
 #include "iostream"
 #include "DeltaTime.h"
 #include "TextObject.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
 
-dae::FPSComponent::FPSComponent()
-	: Component{},
+dae::FPSComponent::FPSComponent(dae::GameObject* pOwner)
+	: dae::Component{pOwner},
 	m_Frames_Per_Second{ 0.0f },
 	m_fpsText{ "" },
 	m_FrameCounter{ 0 },
@@ -15,11 +16,11 @@ dae::FPSComponent::FPSComponent()
 {
 	auto font = dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	m_TextObject = std::make_shared<dae::TextObject>(m_fpsText, font);
+	
 }
 
 void dae::FPSComponent::Update()
 {
-
 	m_Delay += DeltaTime::GetInstance().GetDeltaTime();
 	m_FrameCounter++;
 	if (m_Delay >= m_MaxDelay)

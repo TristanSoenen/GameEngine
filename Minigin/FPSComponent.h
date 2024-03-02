@@ -7,14 +7,17 @@
 
 namespace dae
 {
+	class GameObject;
+
 	class FPSComponent : public Component
 	{
 	public:
-		FPSComponent();
+		FPSComponent(GameObject* pOwner);
 		~FPSComponent() = default;
 		void Update() override;
 		void Render() override;
 		float getFramesPerSecond() const { return m_Frames_Per_Second; }
+		
 	private:
 		float m_Frames_Per_Second;
 		int m_FrameCounter;
