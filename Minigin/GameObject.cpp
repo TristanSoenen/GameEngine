@@ -70,16 +70,16 @@ bool dae::GameObject::HasComponentBeenAdded(std::shared_ptr<dae::Component> comp
 	return false;
 }
 
-//dae::GameObject* dae::GameObject::GetParent()
-//{
-//	return m_Parent;
-//}
+std::shared_ptr<dae::GameObject> dae::GameObject::GetParent()
+{
+	return m_Parent;
+}
 
 void dae::GameObject::SetParent(std::shared_ptr<dae::GameObject> parent, bool keepWorldPosition)
 {
 	glm::vec3 oldPos = m_TransformComponent->GetWorldPosition();
 	// 1. Check if the new parent is valid(not itself or one of its children)
-	if (parent == m_Parent)
+	if (m_Parent == parent)
 	{
 		return;
 	}
@@ -114,15 +114,15 @@ void dae::GameObject::SetParent(std::shared_ptr<dae::GameObject> parent, bool ke
 
 }
 
-//size_t dae::GameObject::GetChildrenCount()
-//{
-//	return m_Children.size();
-//}
-//
-//std::shared_ptr<dae::GameObject> dae::GameObject::GetChildAt(int index)
-//{
-//	return m_Children[index];
-//}
+size_t dae::GameObject::GetChildrenCount()
+{
+	return m_Children.size();
+}
+
+dae::GameObject* dae::GameObject::GetChildAt(int index)
+{
+	return m_Children[index];
+}
 
 void dae::GameObject::AddChild(dae::GameObject* child)
 {
@@ -130,7 +130,7 @@ void dae::GameObject::AddChild(dae::GameObject* child)
 	if (child != nullptr )
 	{
 		// 2. Remove the given child from the childs pervious parent(remove child?)
-		//RemoveChild(child);
+		RemoveChild(child);
 		//// 3. set itself as parent of the child(set parent?)
 		//child->SetParent(m_Parent, false);
 		// 4. add the child to its children list.
@@ -146,12 +146,13 @@ void dae::GameObject::RemoveChild(dae::GameObject* child)
 	{
 		return;
 	}
-	// 2. remove the given child from the children list
-	m_Children.erase(std::remove(m_Children.begin(), m_Children.end(), child));
-	// 3. remove itself as a parent of the child(SetParent?)
-	
+	if (m_Children.empty() == false)
+	{
+		// 2. remove the given child from the children list
+		m_Children.erase(std::remove(m_Children.begin(), m_Children.end(), child));
+		// 3. remove itself as a parent of the child(SetParent?)
+	}
 	// 4. update position, roation and scale
-	
 }
 
 //bool dae::GameObject::IsChild(dae::GameObject> parent)

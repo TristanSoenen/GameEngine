@@ -42,10 +42,10 @@ namespace dae
 		GameObject& operator=(GameObject&& other) = delete;
 
 		//parents and children
-		GameObject* GetParent();
+		std::shared_ptr<GameObject> GetParent();
 		void SetParent(std::shared_ptr<GameObject> parent, bool keepWorldPosition);
 		size_t GetChildrenCount();
-		std::shared_ptr<GameObject> GetChildAt(int index);
+		GameObject* GetChildAt(int index);
 		//bool IsChild(GameObject* parent);
 
 	private:
