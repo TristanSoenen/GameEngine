@@ -78,12 +78,11 @@ namespace dae
 	template<typename T>
 	inline std::shared_ptr <T> dae::GameObject::GetComponent()
 	{
-		
 		for(auto& component : m_Components)
 		{
-			std::cout << m_Components.size() << std::endl;
-			std::cout << "type" << typeid(*component).name() << std::endl;
-			std::cout << "T type" << typeid(T).name() << std::endl;
+			//std::cout << m_Components.size() << std::endl;
+			//std::cout << "type" << typeid(*component).name() << std::endl;
+			//std::cout << "T type" << typeid(T).name() << std::endl;
 			if (auto castedComponent = std::dynamic_pointer_cast<T>(component))
 			{
 				return castedComponent;
