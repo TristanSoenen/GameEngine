@@ -4,6 +4,7 @@
 #include "glm/glm.hpp"
 #include <vector>
 #include <string>
+#include "iostream"
 
 namespace dae
 {
@@ -77,8 +78,18 @@ namespace dae
 	template<typename T>
 	inline std::shared_ptr <T> dae::GameObject::GetComponent()
 	{
-		auto component = std::find(m_Components.begin(), m_Components.end(), T);
-		return component;
+		
+		for(auto& component : m_Components)
+		{
+			std::cout << m_Components.size() << std::endl;
+			std::cout << "type" << typeid(*component).name() << std::endl;
+			std::cout << "T type" << typeid(T).name() << std::endl;
+			if (auto castedComponent = std::dynamic_pointer_cast<T>(component))
+			{
+				return castedComponent;
+			}
+		}
+		return nullptr;
 	}
 }
 

@@ -31,7 +31,7 @@ void dae::GameObject::Update()
 
 void dae::GameObject::Render() const
 {
-	const auto& pos = m_transform.GetPosition();
+	const auto& pos = m_TransformComponent->GetPosition();
 	Renderer::GetInstance().RenderTexture(*m_texture, pos.x, pos.y);
 
 	for (auto& component : m_Components)
@@ -51,10 +51,10 @@ void dae::GameObject::SetPosition(float x, float y)
 	m_TransformComponent->SetPosition(x, y, 0.0f);
 }
 
-//glm::vec3 dae::GameObject::GetWorldPosition() const
-//{
-//	return m_TransformComponent->GetWorldPosition();
-//}
+glm::vec3 dae::GameObject::GetWorldPosition()
+{
+	return m_TransformComponent->GetWorldPosition();
+}
 
 void dae::GameObject::RemoveComponent(std::shared_ptr<dae::Component> component)
 {
@@ -92,8 +92,11 @@ void dae::GameObject::SetParent(std::shared_ptr<dae::GameObject> parent, bool ke
 	{
 		if (keepWorldPosition == true)
 		{
-			//m_TransformComponent->SetPosition(m_TransformComponent->GetWorldPosition() - parent->GetWorldPosition());
-			//m_TransformComponent->SetDirtyFlag();
+			glm::vec3 worldPos = m_TransformComponent->GetWorldPosition();
+			glm::vec3 parentPos = parent->GetWorldPosition();
+			glm::vec3 newPos = worldPos - parentPos;
+			m_TransformComponent->SetPosition( newPos.x, newPos.y, newPos.z );
+			m_TransformComponent->SetDirtyFlag();
 		}
 	}
 
@@ -126,33 +129,23 @@ dae::GameObject* dae::GameObject::GetChildAt(int index)
 
 void dae::GameObject::AddChild(dae::GameObject* child)
 {
-	// 1. Check if the new child is valid(Not null and not one of its parents)
 	if (child != nullptr )
 	{
-		// 2. Remove the given child from the childs pervious parent(remove child?)
 		RemoveChild(child);
-		//// 3. set itself as parent of the child(set parent?)
-		//child->SetParent(m_Parent, false);
-		// 4. add the child to its children list.
 		m_Children.emplace_back(child);
-		// 5. update position, rotation and scale.
 	}
 }
 
 void dae::GameObject::RemoveChild(dae::GameObject* child)
 {
-	// 1. Check if the child is valid(not null and one of its children)
 	if (child == nullptr)
 	{
 		return;
 	}
 	if (m_Children.empty() == false)
 	{
-		// 2. remove the given child from the children list
 		m_Children.erase(std::remove(m_Children.begin(), m_Children.end(), child));
-		// 3. remove itself as a parent of the child(SetParent?)
 	}
-	// 4. update position, roation and scale
 }
 
 //bool dae::GameObject::IsChild(dae::GameObject> parent)
