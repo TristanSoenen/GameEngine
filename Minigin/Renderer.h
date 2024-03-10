@@ -10,6 +10,8 @@ namespace dae
 	 */
 	class Renderer final : public Singleton<Renderer>
 	{
+		int* m_Amount = new int{ 10 };
+		int* m_Amount2 = new int{ 100 };
 		SDL_Renderer* m_renderer{};
 		SDL_Window* m_window{};
 		SDL_Color m_clearColor{};	

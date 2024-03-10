@@ -46,14 +46,17 @@ void dae::Renderer::Render() const
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
-	//ImGui::ShowDemoWindow();
+	ImGui::ShowDemoWindow();
 
 	ImGui::Begin("exercise1");
-
+	ImGui::InputInt("# samples", m_Amount);
+	ImGui::Button("Trash The Cashe");
 	ImGui::End();
 
 	ImGui::Begin("exercise2");
-
+	ImGui::InputInt("# samples", m_Amount2);
+	ImGui::Button("Trash The Cashe with GameObject3D");
+	ImGui::Button("Trash The Cashe with GameObject3DAlt");
 	ImGui::End();
 	
 	ImGui::Render();
@@ -64,6 +67,9 @@ void dae::Renderer::Render() const
 
 void dae::Renderer::Destroy()
 {
+	delete m_Amount;
+	delete m_Amount2;
+
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();
