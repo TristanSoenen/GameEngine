@@ -10,8 +10,10 @@ namespace dae
 	 */
 	class Renderer final : public Singleton<Renderer>
 	{
+		void TrashTheCasheEx1() const;
 		int* m_Amount = new int{ 10 };
-		int* m_Amount2 = new int{ 100 };
+		int* m_Amount2 = new int{ 10 };
+		float m_Values[11]{};
 		SDL_Renderer* m_renderer{};
 		SDL_Window* m_window{};
 		SDL_Color m_clearColor{};	
@@ -27,6 +29,8 @@ namespace dae
 
 		const SDL_Color& GetBackgroundColor() const { return m_clearColor; }
 		void SetBackgroundColor(const SDL_Color& color) { m_clearColor = color; }
+
+		
 	};
 }
 

@@ -4,6 +4,10 @@
 #include "Texture2D.h"
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_sdl2.h"
+#include "imgui_plot.h"
+#include "chrono"
+#include "iostream"
+
 
 
 int GetOpenGLDriverIndex()
@@ -50,7 +54,12 @@ void dae::Renderer::Render() const
 
 	ImGui::Begin("exercise1");
 	ImGui::InputInt("# samples", m_Amount);
-	ImGui::Button("Trash The Cashe");
+	
+	if (ImGui::Button("Trash The Cashe"))
+	{
+		TrashTheCasheEx1();
+	}
+	//ImGui::PlotLines();
 	ImGui::End();
 
 	ImGui::Begin("exercise2");
@@ -101,3 +110,36 @@ void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const
 }
 
 SDL_Renderer* dae::Renderer::GetSDLRenderer() const { return m_renderer; }
+
+void dae::Renderer::TrashTheCasheEx1() const
+{
+	int amountOfTimes = *m_Amount;
+	for (int j = 0; j <= amountOfTimes; j++)
+	{
+		const int size{ 1'000'000 };
+		int* arr{ new int[size] {} };
+		//gameobject3D* object{ new gameobject3D[size]{} };
+		//gameobject3DAlt* objectAlt{ new gameobject3DAlt[size]{} };
+
+		int arrIndex = 0;
+		for (int stepsize = 1; stepsize <= 1024; stepsize *= 2)
+		{
+			
+			auto start = std::chrono::high_resolution_clock::now();
+			for (int i = 0; i < size; i += stepsize)
+			{
+				arr[i] *= 2;
+				//object[i].id *= 2;
+				//objectAlt[i].id *= 2;
+			}
+
+			auto end = std::chrono::high_resolution_clock::now();
+			auto elapsedTime = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+			std::cout /*<< stepsize << " "*/ << elapsedTime << "\n";
+			//m_Values[arrIndex] = float(elapsedTime);
+			arrIndex++;
+		}
+
+		delete arr;
+	}
+}
