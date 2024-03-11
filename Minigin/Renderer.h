@@ -14,9 +14,6 @@ namespace dae
 		TrashTheCashe* m_TrashTheCashe;
 		int* m_Amount = new int{ 10 };
 		int* m_Amount2 = new int{ 10 };
-		bool m_ShowGraph1;
-		bool m_ShowGraph2;
-		bool m_ShowGraph3;
 
 		SDL_Renderer* m_renderer{};
 		SDL_Window* m_window{};
