@@ -70,7 +70,6 @@ void dae::Renderer::Render() const
 
 	if (m_TrashTheCashe->CanShowGraph1() == true)
 	{
-		ImGui::PushStyleColor(ImGuiCol_PlotLines,ImVec4(1.0, 0.6f, 0.0f, 1.0f));
 		std::vector<float> temp = m_TrashTheCashe->GetVectorEx1();
 		float arr[11]{};
 		for (int index{ 0 }; index < 11; index++)
@@ -96,7 +95,6 @@ void dae::Renderer::Render() const
 
 	if (m_TrashTheCashe->CanShowGraph2() == true)
 	{
-		ImGui::PushStyleColor(ImGuiCol_PlotLines, ImVec4(0.5, 1.0f, 0.0f, 1.0f));
 		std::vector<float> temp2 = m_TrashTheCashe->GetVectorEx2();
 		float arr2[11]{};
 		for (int index{ 0 }; index < 11; index++)
@@ -116,7 +114,6 @@ void dae::Renderer::Render() const
 
 	if (m_TrashTheCashe->CanShowGraph3() == true)
 	{
-		ImGui::PushStyleColor(ImGuiCol_PlotLines, ImVec4(0.0, 0.8f, 1.0f, 1.0f));
 		std::vector<float> temp3 = m_TrashTheCashe->GetVectorEx2Alt();
 		float arr3[11]{};
 		for (int index{ 0 }; index < 11; index++)
