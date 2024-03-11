@@ -5,15 +5,19 @@
 namespace dae
 {
 	class Texture2D;
+	class TrashTheCashe;
 	/**
 	 * Simple RAII wrapper for the SDL renderer
 	 */
 	class Renderer final : public Singleton<Renderer>
 	{
-		void TrashTheCasheEx1() const;
+		TrashTheCashe* m_TrashTheCashe;
 		int* m_Amount = new int{ 10 };
 		int* m_Amount2 = new int{ 10 };
-		float m_Values[11]{};
+		bool m_ShowGraph1;
+		bool m_ShowGraph2;
+		bool m_ShowGraph3;
+
 		SDL_Renderer* m_renderer{};
 		SDL_Window* m_window{};
 		SDL_Color m_clearColor{};	
