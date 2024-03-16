@@ -13,7 +13,7 @@ bool dae::InputManager::ProcessInput()
 	ZeroMemory(&currentState, sizeof(XINPUT_STATE));
 	XInputGetState(m_ControllerIndex, &currentState);
 
-	auto buttonChanges = currentState.Gamepad.wButtons ^ previusState.Gamepad.wButtons;
+	//auto buttonChanges = currentState.Gamepad.wButtons ^ previusState.Gamepad.wButtons;
 	//buttonsPressedThisFrame = buttonChanges & currentState.Gamepad.wButtons;
 	//buttonsReleasedThisFrame = buttonChanges & (~currentState.Gamepad.wButtons);
 

@@ -16,7 +16,7 @@ namespace dae
 	protected:
 		GameObject* GetGameActor() const { return m_actor; }
 	public:
-		GameActorCommand(GameObject* actor) {};
+		//GameActorCommand(GameObject* actor) {};
 		virtual ~GameActorCommand() {};
 	};
 }
