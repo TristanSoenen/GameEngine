@@ -1,24 +1,22 @@
 #pragma once
-#include "Xinput.h"
-#include "Singleton.h"
-#include <memory>
+#include <Xinput.h>
 
 namespace dae
 {
-	class Controller;
+	struct ControllerInput
+	{
 
-	class InputManager final : public Singleton<InputManager>
+	};
+
+	class Controller
 	{
 	public:
+		Controller() = default;
+		~Controller() = default;
+
 		bool ProcessInput();
-		
-		bool TestController()
-		{
-			/*bool result{ IsPressed(1) };
-			return result;*/
-		}
 	private:
-		/*bool IsDownThisFrame(unsigned int button) const
+		bool IsDownThisFrame(unsigned int button) const
 		{
 			return m_ButtonsPressedThisFrame & button;
 		}
@@ -34,8 +32,6 @@ namespace dae
 		XINPUT_STATE m_CurrentState;
 		int m_ControllerIndex{};
 		unsigned int m_ButtonsPressedThisFrame;
-		unsigned int m_ButtonsReleasedThisFrame;*/
-		//std::unique_ptr<Controller> m_Controller1;
+		unsigned int m_ButtonsReleasedThisFrame;
 	};
-
 }

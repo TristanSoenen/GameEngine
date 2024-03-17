@@ -12,6 +12,7 @@
 #include "DeltaTime.h"
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 SDL_Window* g_window{};
 
@@ -98,6 +99,11 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		lag += time.GetDeltaTime();
 
 		doContinue = input.ProcessInput();
+
+	/*	if (input.TestController())
+		{
+			std::cout << "dpad up pressed\n";
+		}*/
 
 		while (lag >= fixed_time_Step)
 		{

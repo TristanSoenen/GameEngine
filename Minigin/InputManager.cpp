@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include "control.h"
 #include "Windows.h"
 #include "InputManager.h"
 #include <backends/imgui_impl_sdl2.h>
@@ -6,17 +7,16 @@
 
 bool dae::InputManager::ProcessInput()
 {
-	XINPUT_STATE currentState{};
-	XINPUT_STATE previusState{};
+	/*XINPUT_STATE previusState{};
 	
-	CopyMemory(&previusState, &currentState, sizeof(XINPUT_STATE));
-	ZeroMemory(&currentState, sizeof(XINPUT_STATE));
-	XInputGetState(m_ControllerIndex, &currentState);
+	CopyMemory(&previusState, &m_CurrentState, sizeof(XINPUT_STATE));
+	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
+	XInputGetState(m_ControllerIndex, &m_CurrentState);
 
-	//auto buttonChanges = currentState.Gamepad.wButtons ^ previusState.Gamepad.wButtons;
-	//buttonsPressedThisFrame = buttonChanges & currentState.Gamepad.wButtons;
-	//buttonsReleasedThisFrame = buttonChanges & (~currentState.Gamepad.wButtons);
-
+	auto buttonChanges = m_CurrentState.Gamepad.wButtons ^ previusState.Gamepad.wButtons;
+	m_ButtonsPressedThisFrame = buttonChanges & m_CurrentState.Gamepad.wButtons;
+	m_ButtonsReleasedThisFrame = buttonChanges & (~m_CurrentState.Gamepad.wButtons);*/
+	//m_Controller1->
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT) {
