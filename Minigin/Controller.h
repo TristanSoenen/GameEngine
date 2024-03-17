@@ -31,13 +31,13 @@ namespace dae
 		//template <typename T> std::shared_ptr<T> AddCommand();
 		//void CreateCommand(GameObject* pObject, Command* pCommand);
 	private:
-		XINPUT_STATE m_CurrentState;
+		XINPUT_STATE m_CurrentState{};
 		int m_ControllerIndex{};
-		unsigned int m_ButtonsPressedThisFrame;
-		unsigned int m_ButtonsReleasedThisFrame;
+		unsigned int m_ButtonsPressedThisFrame{};
+		unsigned int m_ButtonsReleasedThisFrame{};
 
 		//Comand
-		std::unique_ptr<dae::Move> m_MoveCommand{};
+		//std::unique_ptr<dae::Move> m_MoveCommand = std::make_unique<dae::Move>();
 		std::vector<dae::Command> m_Comands;
 	};
 }
