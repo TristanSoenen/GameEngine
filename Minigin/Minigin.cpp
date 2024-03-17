@@ -82,11 +82,13 @@ dae::Minigin::~Minigin()
 void dae::Minigin::Run(const std::function<void()>& load)
 {
 	load();
-
+	
 	auto& renderer = Renderer::GetInstance();
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 	auto& time = DeltaTime::GetInstance();
+
+
 
 	// todo: this update loop could use some work.
 	bool doContinue = true;
@@ -104,6 +106,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		{
 			std::cout << "dpad up pressed\n";
 		}*/
+		
 
 		while (lag >= fixed_time_Step)
 		{

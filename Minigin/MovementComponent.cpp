@@ -1,4 +1,5 @@
 #include "MovementComponent.h"
+#include <iostream>
 
 dae::MovementComponent::MovementComponent(GameObject* pOwner)
 	:Component{ pOwner }
@@ -8,5 +9,5 @@ dae::MovementComponent::MovementComponent(GameObject* pOwner)
 
 void dae::MovementComponent::MovementInput()
 {
-
+	std::cout << "move";
 }

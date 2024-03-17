@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "MovementComponent.h"
 namespace dae
 {
 	class Command
@@ -16,8 +17,15 @@ namespace dae
 	protected:
 		GameObject* GetGameActor() const { return m_actor; }
 	public:
-		//GameActorCommand(GameObject* actor) {};
+		GameActorCommand(GameObject* actor) { m_actor = actor; }
 		virtual ~GameActorCommand() {};
 	};
-}
 
+	class Move : public GameActorCommand
+	{
+	private:
+
+	public:
+		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(); }
+	};
+}

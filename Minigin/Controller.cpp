@@ -1,4 +1,3 @@
-#include "Windows.h"
 #include "Controller.h"
 
 bool dae::Controller::ProcessInput()
@@ -13,5 +12,16 @@ bool dae::Controller::ProcessInput()
 	m_ButtonsPressedThisFrame = buttonChanges & m_CurrentState.Gamepad.wButtons;
 	m_ButtonsReleasedThisFrame = buttonChanges & (~m_CurrentState.Gamepad.wButtons);
 
+	//if (XINPUT_GAMEPAD_DPAD_UP)
+	//{
+	//	//command
+	//	m_MoveCommand->Execute();
+	//}
+
 	return true;
 }
+
+//void dae::Controller::CreateCommand(GameObject* pObject, Command* pCommand)
+//{
+//	std::make_unique<pCommand>();
+//}
