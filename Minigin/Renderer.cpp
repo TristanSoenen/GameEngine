@@ -41,7 +41,7 @@ void dae::Renderer::Init(SDL_Window* window)
 	ImGui_ImplSDL2_InitForOpenGL(window, SDL_GL_GetCurrentContext());
 	ImGui_ImplOpenGL3_Init();
 
-	m_TrashTheCashe = new dae::TrashTheCashe();
+	//m_TrashTheCashe = new dae::TrashTheCashe();
 }
 
 void dae::Renderer::Render() const
@@ -123,7 +123,7 @@ void dae::Renderer::Render() const
 	//	ImGui::PlotLines("", arr3, 11, 0, 0, FLT_MAX, FLT_MAX, ImVec2(150.0f, 150.0f));
 	//}
 	
-	ImGui::End();
+	//ImGui::End();
 	
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -133,9 +133,9 @@ void dae::Renderer::Render() const
 
 void dae::Renderer::Destroy()
 {
-	delete m_Amount;
-	delete m_Amount2;
-	delete m_TrashTheCashe;
+	//delete m_Amount;
+	//delete m_Amount2;
+	//delete m_TrashTheCashe;
 
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
