@@ -26,14 +26,6 @@ namespace dae
 		virtual ~GameActorCommand() = default;
 	};
 
-	/*class Move : public GameActorCommand
-	{
-	public:
-		Move(GameObject* actor) : GameActorCommand{ actor } {};
-		~Move() = default;
-		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(); }
-	};*/
-
 	class MoveUp : public GameActorCommand
 	{
 	public:

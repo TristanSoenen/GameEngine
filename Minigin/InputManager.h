@@ -16,7 +16,6 @@ namespace dae
 	{
 	public:
 		bool ProcessInput();
-		//void CreateCommand(GameObject* pObject,Command* pCommand, unsigned int key, bool controller);
 		void CreateCommand(std::unique_ptr<Command> pCommand);
 	private:
 		//Comand

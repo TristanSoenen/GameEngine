@@ -61,11 +61,6 @@ bool dae::InputManager::ProcessInput()
 	return true;
 }
 
-//void dae::InputManager::AddController()
-//{
-// 
-//}
-
 void dae::InputManager::CreateCommand(std::unique_ptr<dae::Command> pCommand)
 {
 	m_Commands.emplace_back(std::move(pCommand));

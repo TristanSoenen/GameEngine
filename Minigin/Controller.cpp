@@ -12,12 +12,6 @@ bool dae::Controller::ProcessInput()
 	m_ButtonsPressedThisFrame = buttonChanges & m_CurrentState.Gamepad.wButtons;
 	m_ButtonsReleasedThisFrame = buttonChanges & (~m_CurrentState.Gamepad.wButtons);
 
-	//if (XINPUT_GAMEPAD_DPAD_UP)
-	//{
-	//	//command
-	//	m_Commands[0]->Execute();
-	//}
-
 	return true;
 }
 
