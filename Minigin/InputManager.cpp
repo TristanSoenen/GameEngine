@@ -24,34 +24,7 @@ bool dae::InputManager::ProcessInput()
 		ImGui_ImplSDL2_ProcessEvent(&e);
 		if (e.type == SDL_KEYDOWN) 
 		{
-			if (e.key.keysym.scancode == SDL_SCANCODE_W)
-			{
-				if (m_Commands.size() > 0)
-				{
-					m_Commands[0]->Execute();
-				}
-			}
-			if (e.key.keysym.scancode == SDL_SCANCODE_S)
-			{
-				if (m_Commands.size() > 0)
-				{
-					m_Commands[1]->Execute();
-				}
-			}
-			if (e.key.keysym.scancode == SDL_SCANCODE_A)
-			{
-				if (m_Commands.size() > 0)
-				{
-					m_Commands[3]->Execute();
-				}
-			}
-			if (e.key.keysym.scancode == SDL_SCANCODE_D)
-			{
-				if (m_Commands.size() > 0)
-				{
-					m_Commands[2]->Execute();
-				}
-			}
+	
 		}
 		if (e.type == SDL_MOUSEBUTTONDOWN) {
 			
@@ -60,6 +33,34 @@ bool dae::InputManager::ProcessInput()
 		// etc...
 	}
 
+	if (IsPressed(SDL_SCANCODE_W))
+	{
+		if (m_Commands.size() > 0)
+		{
+			m_Commands[0]->Execute();
+		}
+	}
+	if (IsPressed(SDL_SCANCODE_S))
+	{
+		if (m_Commands.size() > 0)
+		{
+			m_Commands[1]->Execute();
+		}
+	}
+	if (IsPressed(SDL_SCANCODE_D))
+	{
+		if (m_Commands.size() > 0)
+		{
+			m_Commands[3]->Execute();
+		}
+	}
+	if (IsPressed(SDL_SCANCODE_A))
+	{
+		if (m_Commands.size() > 0)
+		{
+			m_Commands[2]->Execute();
+		}
+	}
 
 
 
