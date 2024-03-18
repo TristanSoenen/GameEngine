@@ -7,8 +7,13 @@
 
 bool dae::InputManager::ProcessInput()
 {
-
-	//m_Controller1->ProcessInput();
+	if (m_Controllers.size() > 0)
+	{
+		for (int index = 0; index < int(m_Controllers.size()); index++)
+		{
+			m_Controllers[index]->ProcessInput();
+		}
+	}
 	
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
@@ -64,4 +69,17 @@ bool dae::InputManager::ProcessInput()
 void dae::InputManager::CreateCommand(std::unique_ptr<dae::Command> pCommand)
 {
 	m_Commands.emplace_back(std::move(pCommand));
+}
+
+void dae::InputManager::CreateCommandForController(std::unique_ptr<Command> pCommand, int ControllerIndex)
+{
+	if (m_Controllers.size() > 0)
+	{
+		m_Controllers[ControllerIndex]->CreateCommand(std::move(pCommand));
+	}
+}
+
+void dae::InputManager::AddController(std::unique_ptr<Controller> pController)
+{
+	m_Controllers.emplace_back(std::move(pController));
 }
