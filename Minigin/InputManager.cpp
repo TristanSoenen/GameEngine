@@ -51,17 +51,16 @@ bool dae::InputManager::ProcessInput()
 	{
 		if (m_Commands.size() > 0)
 		{
-			m_Commands[3]->Execute();
+			m_Commands[2]->Execute();
 		}
 	}
 	if (IsPressed(SDL_SCANCODE_A))
 	{
 		if (m_Commands.size() > 0)
 		{
-			m_Commands[2]->Execute();
+			m_Commands[3]->Execute();
 		}
 	}
-
 
 
 	return true;
