@@ -27,9 +27,7 @@ namespace dae
 		}
 
 		bool ProcessInput();
-		template <typename T> void CreateCommand(GameObject* pObject, T);
-		//template <typename T> std::shared_ptr<T> AddCommand();
-		//void CreateCommand(GameObject* pObject, Command* pCommand);
+		void CreateCommand(std::unique_ptr<Command> pCommand);
 	private:
 		XINPUT_STATE m_CurrentState{};
 		int m_ControllerIndex{};
@@ -37,14 +35,6 @@ namespace dae
 		unsigned int m_ButtonsReleasedThisFrame{};
 
 		//Comand
-		//std::unique_ptr<dae::Move> m_MoveCommand = std::make_unique<dae::Move>();
-		std::vector<dae::Command> m_Comands;
+		std::vector<std::unique_ptr<dae::Command>> m_Commands;
 	};
-}
-
-template <typename T>
-void dae::Controller::CreateCommand(dae::GameObject* pObject, T type)
-{
-	auto command = std::make_unique<type>(pObject);
-	m_Comands.emplace_back(command);
 }

@@ -15,13 +15,13 @@ bool dae::Controller::ProcessInput()
 	//if (XINPUT_GAMEPAD_DPAD_UP)
 	//{
 	//	//command
-	//	m_MoveCommand->Execute();
+	//	m_Commands[0]->Execute();
 	//}
 
 	return true;
 }
 
-//void dae::Controller::CreateCommand(GameObject* pObject, Command* pCommand)
-//{
-//	std::make_unique<pCommand>();
-//}
+void dae::Controller::CreateCommand(std::unique_ptr<dae::Command> pCommand)
+{
+	m_Commands.emplace_back(std::move(pCommand));
+}

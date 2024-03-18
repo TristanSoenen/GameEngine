@@ -6,6 +6,8 @@ namespace dae
 	class Command
 	{
 	public:
+		Command() {};
+
 		virtual ~Command() = default;
 		virtual void Execute() = 0;
 	};
@@ -17,15 +19,47 @@ namespace dae
 	protected:
 		GameObject* GetGameActor() const { return m_actor; }
 	public:
-		GameActorCommand(GameObject* actor) { m_actor = actor; }
-		virtual ~GameActorCommand() {};
+		GameActorCommand(GameObject* actor) 
+			:Command()
+			,m_actor{actor}
+		{}
+		virtual ~GameActorCommand() = default;
 	};
 
-	class Move : public GameActorCommand
+	/*class Move : public GameActorCommand
 	{
-	private:
-
 	public:
+		Move(GameObject* actor) : GameActorCommand{ actor } {};
+		~Move() = default;
 		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(); }
+	};*/
+
+	class MoveUp : public GameActorCommand
+	{
+	public:
+		MoveUp(GameObject* actor) : GameActorCommand{ actor } {};
+		~MoveUp() = default;
+		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Up); }
+	};
+	class MoveDown : public GameActorCommand
+	{
+	public:
+		MoveDown(GameObject* actor) : GameActorCommand{ actor } {};
+		~MoveDown() = default;
+		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Down); }
+	};
+	class MoveLeft : public GameActorCommand
+	{
+	public:
+		MoveLeft(GameObject* actor) : GameActorCommand{ actor } {};
+		~MoveLeft() = default;
+		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Left); }
+	};
+	class MoveRight : public GameActorCommand
+	{
+	public:
+		MoveRight(GameObject* actor) : GameActorCommand{ actor } {};
+		~MoveRight() = default;
+		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Right); }
 	};
 }
