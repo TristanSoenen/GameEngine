@@ -19,7 +19,7 @@ namespace dae
 	private:
 
 		//vector of keys and vector of commands use map instead?
-		std::vector<int, std::unique_ptr<Command>> m_KeysAndCommands;
+		//std::vector<int, std::unique_ptr<Command>> m_KeysAndCommands;
 
 	};
 }
