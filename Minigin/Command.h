@@ -1,6 +1,9 @@
 #pragma once
+#include "glm/glm.hpp"
 #include "GameObject.h"
 #include "MovementComponent.h"
+#include "DeltaTime.h"
+
 namespace dae
 {
 	class Command
@@ -53,5 +56,27 @@ namespace dae
 		MoveRight(GameObject* actor) : GameActorCommand{ actor } {};
 		~MoveRight() = default;
 		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Right); }
+	};
+
+	class MoveCommand : public GameActorCommand
+	{
+		glm::vec3 m_Direction;
+		float m_MoveSpeed;
+	public:
+		MoveCommand(GameObject* actor, const glm::vec3 direction, const float moveSpeed)
+			: GameActorCommand(actor)
+			, m_Direction(direction)
+			, m_MoveSpeed(moveSpeed)
+		{
+
+		}
+
+		~MoveCommand() = default;
+		void Execute() override
+		{
+			glm::vec3 nextPos = GetGameActor()->GetWorldPosition();
+			nextPos += glm::normalize(m_Direction) * m_MoveSpeed *  DeltaTime::GetInstance().GetDeltaTime();
+			GetGameActor()->SetPosition(nextPos.x, nextPos.y);
+		}
 	};
 }

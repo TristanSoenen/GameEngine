@@ -2,8 +2,10 @@
 #include "Windows.h"
 #include <Xinput.h>
 #include "Command.h"
+#include "Structs.h"
 #include <memory>
 #include <vector>
+#include <unordered_map>
 
 namespace dae
 {
@@ -27,7 +29,7 @@ namespace dae
 		}
 
 		bool ProcessInput();
-		void CreateCommand(std::unique_ptr<Command> pCommand);
+		void CreateCommand(std::unique_ptr<dae::Command> pCommand, const int key);
 	private:
 		XINPUT_STATE m_CurrentState{};
 		int m_ControllerIndex{};
@@ -36,5 +38,7 @@ namespace dae
 
 		//Comand
 		std::vector<std::unique_ptr<dae::Command>> m_Commands;
+		std::vector<int> m_Keys;
+		//std::unordered_map<int, std::unique_ptr<dae::Command>> m_CommandAndKey;
 	};
 }

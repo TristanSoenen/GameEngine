@@ -18,7 +18,7 @@ namespace dae
 		bool ProcessInput();
 		bool IsPressed(unsigned int key) { const Uint8* state = SDL_GetKeyboardState(NULL);  return state[key]; }
 		void CreateCommand(std::unique_ptr<Command> pCommand);
-		void CreateCommandForController(std::unique_ptr<Command> pCommand, int ControllerIndex);
+		void CreateCommandForController(std::unique_ptr<Command> pCommand, int ControllerIndex, const int key);
 		void AddController(std::unique_ptr<Controller> pController);
 	private:
 		//Comand
