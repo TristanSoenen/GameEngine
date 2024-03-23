@@ -15,12 +15,12 @@ namespace dae
 
 		bool ProcessInput();
 		bool IsPressed(unsigned int key) { const Uint8* state = SDL_GetKeyboardState(NULL);  return state[key]; }
+		void CreateCommand(std::unique_ptr<dae::Command> pCommand, const int key);
 
 	private:
 
-		//vector of keys and vector of commands use map instead?
-		//std::vector<int, std::unique_ptr<Command>> m_KeysAndCommands;
-
+		std::vector<std::unique_ptr<dae::Command>> m_Commands;
+		std::vector<int> m_Keys;
 	};
 }
 

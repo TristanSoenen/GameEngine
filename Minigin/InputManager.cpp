@@ -14,6 +14,11 @@ bool dae::InputManager::ProcessInput()
 			m_Controllers[index]->ProcessInput();
 		}
 	}
+
+	if (m_Keyboard != nullptr)
+	{
+		m_Keyboard->ProcessInput();
+	}
 	
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
@@ -66,9 +71,9 @@ bool dae::InputManager::ProcessInput()
 	return true;
 }
 
-void dae::InputManager::CreateCommand(std::unique_ptr<dae::Command> pCommand)
+void dae::InputManager::CreateCommandKeyBoard(std::unique_ptr<dae::Command> pCommand, int key)
 {
-	m_Commands.emplace_back(std::move(pCommand));
+	m_Keyboard->CreateCommand(std::move(pCommand), key);
 }
 
 void dae::InputManager::CreateCommandForController(std::unique_ptr<Command> pCommand, int ControllerIndex,const int key)

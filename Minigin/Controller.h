@@ -39,6 +39,5 @@ namespace dae
 		//Comand
 		std::vector<std::unique_ptr<dae::Command>> m_Commands;
 		std::vector<int> m_Keys;
-		//std::unordered_map<int, std::unique_ptr<dae::Command>> m_CommandAndKey;
 	};
 }

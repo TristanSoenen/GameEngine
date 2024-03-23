@@ -1,7 +1,6 @@
 #pragma once
 #include "glm/glm.hpp"
 #include "GameObject.h"
-#include "MovementComponent.h"
 #include "DeltaTime.h"
 
 namespace dae
@@ -27,35 +26,6 @@ namespace dae
 			,m_actor{actor}
 		{}
 		virtual ~GameActorCommand() = default;
-	};
-
-	class MoveUp : public GameActorCommand
-	{
-	public:
-		MoveUp(GameObject* actor) : GameActorCommand{ actor } {};
-		~MoveUp() = default;
-		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Up); }
-	};
-	class MoveDown : public GameActorCommand
-	{
-	public:
-		MoveDown(GameObject* actor) : GameActorCommand{ actor } {};
-		~MoveDown() = default;
-		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Down); }
-	};
-	class MoveLeft : public GameActorCommand
-	{
-	public:
-		MoveLeft(GameObject* actor) : GameActorCommand{ actor } {};
-		~MoveLeft() = default;
-		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Left); }
-	};
-	class MoveRight : public GameActorCommand
-	{
-	public:
-		MoveRight(GameObject* actor) : GameActorCommand{ actor } {};
-		~MoveRight() = default;
-		void Execute() override { GetGameActor()->GetComponent<dae::MovementComponent>()->MovementInput(dae::Direction::Right); }
 	};
 
 	class MoveCommand : public GameActorCommand
