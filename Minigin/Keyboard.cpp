@@ -4,7 +4,7 @@ bool dae::Keyboard::ProcessInput()
 {
 	if (!m_Commands.empty() && !m_Keys.empty())
 	{
-		for (int index{ 0 }; index < m_Keys.size(); index++)
+		for (int index{ 0 }; index < int(m_Keys.size()); index++)
 		{
 			if (IsPressed(m_Keys[index]))
 			{
