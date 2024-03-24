@@ -1,7 +1,6 @@
 #pragma once
 #include <memory>
 #include "Transform.h"
-#include "Observer.h"
 #include "glm/glm.hpp"
 #include <vector>
 #include <string>
@@ -43,20 +42,8 @@ namespace dae
 		GameObject* GetChildAt(int index);
 		//bool IsChild(GameObject* parent);
 
-		//observer functions
-		void AddObserver(std::shared_ptr<GameObject> observer);
-		void RemoveObserver(std::shared_ptr<GameObject> observer);
-
-	protected:
-		void NotifyObservers()
-		{
-			//empty
-		}
 
 	private:
-		//observers
-		std::vector<std::shared_ptr<GameObject>> m_Observers;
-
 		//private Functions
 		void AddChild(GameObject* child);
 		void RemoveChild(GameObject* child);
@@ -95,5 +82,3 @@ namespace dae
 		return nullptr;
 	}
 }
-
-

@@ -1,6 +1,6 @@
 #pragma once
-#include "glm/glm.hpp"
 #include "GameObject.h"
+#include "glm/glm.hpp"
 #include "DeltaTime.h"
 
 namespace dae
@@ -23,8 +23,10 @@ namespace dae
 	public:
 		GameActorCommand(GameObject* actor) 
 			:Command()
-			,m_actor{actor}
-		{}
+			,m_actor(actor)
+		{
+		
+		}
 		virtual ~GameActorCommand() = default;
 	};
 

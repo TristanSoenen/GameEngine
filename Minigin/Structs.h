@@ -1,10 +1,9 @@
 #pragma once
 #include "Command.h"
 #include <memory>
+#include <any>
 
-struct CommandAndKey
+struct Event
 {
-	std::unique_ptr<dae::Command> command;
-	int key;
+	std::any Eventfunction;
 };
-

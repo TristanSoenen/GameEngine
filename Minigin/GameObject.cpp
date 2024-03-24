@@ -149,16 +149,3 @@ void dae::GameObject::RemoveChild(dae::GameObject* child)
 		m_Children.erase(std::remove(m_Children.begin(), m_Children.end(), child));
 	}
 }
-
-void dae::GameObject::AddObserver(std::shared_ptr<GameObject> observer)
-{
-	m_Observers.emplace_back(observer);
-}
-
-void dae::GameObject::RemoveObserver(std::shared_ptr<GameObject> observer)
-{
-	if (!m_Observers.empty())
-	{
-		m_Observers.erase(std::remove(m_Observers.begin(), m_Observers.end(), observer));
-	}
-}

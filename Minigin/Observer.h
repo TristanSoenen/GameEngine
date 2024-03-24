@@ -1,14 +1,13 @@
 #pragma once
-//#include "GameObject.h"
+#include "Structs.h"
 
 namespace dae
 {
 	class GameObject;
-
 	class Observer
 	{
 	public:
 		virtual ~Observer() = default;
-		virtual void Notify(GameObject* actor) = 0;
+		virtual  void  Notify(Event eventFunction, GameObject* actor) = 0;
 	};
 }

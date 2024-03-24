@@ -114,6 +114,12 @@
     <ClInclude Include="RenderComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LivesUIComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Subject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ResourceManager.cpp">
@@ -210,6 +216,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LivesUIComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Subject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
