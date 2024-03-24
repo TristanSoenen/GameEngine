@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "Transform.h"
+#include "Observer.h"
 #include "glm/glm.hpp"
 #include <vector>
 #include <string>
@@ -23,13 +24,6 @@ namespace dae
 		template <typename T> std::shared_ptr<T> AddComponent();
 		template <typename T> std::shared_ptr<T> GetComponent();
 		void RemoveComponent(std::shared_ptr<Component> component);
-		//Component* GetComponent();
-		//template <typename T> Component* GetComponent(T)
-		//{
-		//	
-		//	//std::find(T)
-		//	return T;
-		//}
 		bool HasComponentBeenAdded(std::shared_ptr<Component> component);
 		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
@@ -49,7 +43,20 @@ namespace dae
 		GameObject* GetChildAt(int index);
 		//bool IsChild(GameObject* parent);
 
+		//observer functions
+		void AddObserver(Observer* observer);
+		void RemoveObserver(Observer* observer);
+
+	protected:
+		void NotifyObservers()
+		{
+			//empty
+		}
+
 	private:
+		//observers
+		std::vector<Observer*> m_Observers;
+
 		//private Functions
 		void AddChild(GameObject* child);
 		void RemoveChild(GameObject* child);
@@ -64,7 +71,7 @@ namespace dae
 
 		Transform m_transform{};
 		// todo: mmm, every gameobject has a texture? Is that correct?
-		std::shared_ptr<Texture2D> m_texture{};
+		//std::shared_ptr<Texture2D> m_texture{};
 	};
 
 	template<typename T>
@@ -80,9 +87,6 @@ namespace dae
 	{
 		for(auto& component : m_Components)
 		{
-			//std::cout << m_Components.size() << std::endl;
-			//std::cout << "type" << typeid(*component).name() << std::endl;
-			//std::cout << "T type" << typeid(T).name() << std::endl;
 			if (auto castedComponent = std::dynamic_pointer_cast<T>(component))
 			{
 				return castedComponent;

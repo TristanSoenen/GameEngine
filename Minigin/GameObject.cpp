@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "Component.h"
 #include "TransformComponent.h"
+#include "RenderComponent.h"
 #include "algorithm"
 
 dae::GameObject::GameObject()
@@ -31,8 +32,8 @@ void dae::GameObject::Update()
 
 void dae::GameObject::Render() const
 {
-	const auto& pos = m_TransformComponent->GetPosition();
-	Renderer::GetInstance().RenderTexture(*m_texture, pos.x, pos.y);
+	/*const auto& pos = m_TransformComponent->GetPosition();
+	Renderer::GetInstance().RenderTexture(*m_texture, pos.x, pos.y);*/
 
 	for (auto& component : m_Components)
 	{
@@ -42,7 +43,8 @@ void dae::GameObject::Render() const
 
 void dae::GameObject::SetTexture(const std::string& filename)
 {
-	m_texture = ResourceManager::GetInstance().LoadTexture(filename);
+	//m_texture = ResourceManager::GetInstance().LoadTexture(filename);
+	this->GetComponent<RenderComponent>()->SetTexture(filename);
 }
 
 void dae::GameObject::SetPosition(float x, float y)
@@ -148,14 +150,15 @@ void dae::GameObject::RemoveChild(dae::GameObject* child)
 	}
 }
 
-//bool dae::GameObject::IsChild(dae::GameObject> parent)
-//{
-//	for (auto& child : m_Children)
-//	{
-//		if (child == parent)
-//		{
-//			return false;
-//		}
-//	}
-//	return true;
-//}
+void dae::GameObject::AddObserver(Observer* observer)
+{
+	m_Observers.emplace_back(observer);
+}
+
+void dae::GameObject::RemoveObserver(Observer* observer)
+{
+	if (!m_Observers.empty())
+	{
+		m_Observers.erase(std::remove(m_Observers.begin(), m_Observers.end(), observer));
+	}
+}
