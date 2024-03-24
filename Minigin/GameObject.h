@@ -44,8 +44,8 @@ namespace dae
 		//bool IsChild(GameObject* parent);
 
 		//observer functions
-		void AddObserver(Observer* observer);
-		void RemoveObserver(Observer* observer);
+		void AddObserver(std::shared_ptr<GameObject> observer);
+		void RemoveObserver(std::shared_ptr<GameObject> observer);
 
 	protected:
 		void NotifyObservers()
@@ -55,7 +55,7 @@ namespace dae
 
 	private:
 		//observers
-		std::vector<Observer*> m_Observers;
+		std::vector<std::shared_ptr<GameObject>> m_Observers;
 
 		//private Functions
 		void AddChild(GameObject* child);
