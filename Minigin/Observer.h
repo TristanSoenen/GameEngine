@@ -3,11 +3,12 @@
 
 namespace dae
 {
-	class GameObject;
+	class Subject;
 	class Observer
 	{
 	public:
+		Observer() {};
 		virtual ~Observer() = default;
-		virtual  void  Notify(Event eventFunction, GameObject* actor) = 0;
+		virtual void Notify(Subject* subject, Event) = 0;
 	};
 }

@@ -1,30 +1,27 @@
+#ifndef SUBJECT_H // Check if SUBJECT_H is not defined
+#define SUBJECT_H // If not, define SUBJECT_H
+
 #pragma once
 #include "Structs.h"
 #include <vector>
 
 namespace dae
 {
-	class GameObject;
 	class Observer;
 	class Subject
 	{
 	public:
-		void AddObserver(Observer* observer)
-		{
-			m_Observers.emplace_back(observer);
-		}
+		//Subject() = default;
+		virtual ~Subject() = default;
+		void AddObserver(Observer* observer);
+		void RemoveObserver(Observer* observer);
 
-		void RemoveObserver(Observer* observer)
-		{
-			if (!m_Observers.empty())
-			{
-				m_Observers.erase(std::remove(m_Observers.begin(), m_Observers.end(), observer));
-			}
-		}
 	protected:
-		virtual void NotifyObservers(Event event) = 0;
+		void NotifyObservers();
 
 	private:
 		std::vector<Observer*> m_Observers;
 	};
 }
+
+#endif // End of include guard

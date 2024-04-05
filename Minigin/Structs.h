@@ -3,7 +3,12 @@
 #include <memory>
 #include <any>
 
-struct Event
+
+namespace dae
 {
-	std::any Eventfunction;
-};
+	struct Event
+	{
+		std::any Eventfunction;
+	};
+
+}

@@ -51,4 +51,37 @@ namespace dae
 			GetGameActor()->SetPosition(nextPos.x, nextPos.y);
 		}
 	};
+
+	class KillCommand : public GameActorCommand
+	{
+	public:
+		KillCommand(GameObject* actor)
+			:GameActorCommand(actor)
+		{
+
+		}
+		~KillCommand() = default;
+
+		void Execute() override
+		{ 
+
+		}
+	};
+
+	class IncreaseScoreCommand : public GameActorCommand
+	{
+	public:
+		IncreaseScoreCommand(GameObject* actor)
+			:GameActorCommand(actor)
+		{
+
+		}
+
+		~IncreaseScoreCommand() = default;
+
+		void Execute() override
+		{
+
+		}
+	};
 }
