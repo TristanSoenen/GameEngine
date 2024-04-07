@@ -58,6 +58,11 @@ glm::vec3 dae::GameObject::GetWorldPosition()
 	return m_TransformComponent->GetWorldPosition();
 }
 
+void dae::GameObject::AddComponent(std::shared_ptr<Component> component)
+{
+	m_Components.emplace_back(component);
+}
+
 void dae::GameObject::RemoveComponent(std::shared_ptr<dae::Component> component)
 {
 	m_Components.erase(std::remove(m_Components.begin(), m_Components.end(), component), m_Components.end());

@@ -37,6 +37,12 @@
     <Filter Include="Source Files\IMGUI">
       <UniqueIdentifier>{ecfb17aa-f5aa-488b-93a4-6d2356d93e93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Command">
+      <UniqueIdentifier>{56a2c7dc-479a-4012-bff6-389679c54947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Command">
+      <UniqueIdentifier>{134d84e3-3bf3-4f25-b4b6-8e3a02ea26a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singleton.h">
@@ -70,9 +76,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DeltaTime.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Structs.h">
@@ -144,6 +147,9 @@
     <ClInclude Include="..\3rdParty\imgui-1.90.4\imstb_truetype.h">
       <Filter>Header Files\IMGUI</Filter>
     </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Header Files\Command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ResourceManager.cpp">
@@ -177,9 +183,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DeltaTime.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Structs.cpp">
@@ -247,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_widgets.cpp">
       <Filter>Source Files\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Source Files\Command</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

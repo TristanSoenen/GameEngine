@@ -6,14 +6,15 @@
 #include "ResourceManager.h"
 #include "Renderer.h"
 
-dae::FPSComponent::FPSComponent(dae::GameObject* pOwner)
+dae::FPSComponent::FPSComponent(dae::GameObject* pOwner, int test)
 	: dae::Component{pOwner},
 	m_Frames_Per_Second{ 0.0f },
 	m_fpsText{ "" },
-	m_FrameCounter{ 0 },
+	m_FrameCounter{ test },
 	m_Delay{ 0.0f },
 	m_MaxDelay{0.3f}
 {
+	
 	auto font = dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	m_TextObject = std::make_shared<dae::TextObject>(m_fpsText, font);
 	

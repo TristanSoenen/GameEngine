@@ -20,10 +20,14 @@ namespace dae
 		virtual void Update();
 		virtual void Render() const;
 
-		template <typename T> std::shared_ptr<T> AddComponent();
+		//===================Components===========================//
+		//template <typename T> std::shared_ptr<T> AddComponent();
+		void AddComponent(std::shared_ptr<Component> component);
 		template <typename T> std::shared_ptr<T> GetComponent();
 		void RemoveComponent(std::shared_ptr<Component> component);
 		bool HasComponentBeenAdded(std::shared_ptr<Component> component);
+
+
 		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
 		glm::vec3 GetWorldPosition();
@@ -35,7 +39,7 @@ namespace dae
 		GameObject& operator=(const GameObject& other) = delete;
 		GameObject& operator=(GameObject&& other) = delete;
 
-		//parents and children
+		//==================parents and children======================//
 		std::shared_ptr<GameObject> GetParent();
 		void SetParent(std::shared_ptr<GameObject> parent, bool keepWorldPosition);
 		size_t GetChildrenCount();
@@ -61,13 +65,13 @@ namespace dae
 		//std::shared_ptr<Texture2D> m_texture{};
 	};
 
-	template<typename T>
+	/*template<typename T>
 	inline std::shared_ptr <T> dae::GameObject::AddComponent()
 	{
 		auto component = std::make_shared<T>(this);
 		m_Components.emplace_back(component);
 		return component;
-	}
+	}*/
 
 	template<typename T>
 	inline std::shared_ptr <T> dae::GameObject::GetComponent()

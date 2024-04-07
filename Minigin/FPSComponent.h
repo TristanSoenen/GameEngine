@@ -12,7 +12,7 @@ namespace dae
 	class FPSComponent : public Component
 	{
 	public:
-		FPSComponent(GameObject* pOwner);
+		FPSComponent(GameObject* pOwner, int test);
 		~FPSComponent() = default;
 		void Update() override;
 		void Render() override;
