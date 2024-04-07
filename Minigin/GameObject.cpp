@@ -9,7 +9,8 @@
 
 dae::GameObject::GameObject()
 {
-	m_TransformComponent = AddComponent<dae::TransformComponent>();
+	AddComponent(std::make_shared<dae::TransformComponent>(this));
+	m_TransformComponent = GetComponent<dae::TransformComponent>();
 }
 
 dae::GameObject::~GameObject() = default;
