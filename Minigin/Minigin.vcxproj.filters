@@ -239,9 +239,6 @@
     <ClCompile Include="Font.cpp">
       <Filter>Source Files\MiniginFiles</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files\MiniginFiles</Filter>
-    </ClCompile>
     <ClCompile Include="Minigin.cpp">
       <Filter>Source Files\MiniginFiles</Filter>
     </ClCompile>
