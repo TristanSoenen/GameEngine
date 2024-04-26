@@ -49,6 +49,12 @@
     <Filter Include="Header Files\MiniginFiles">
       <UniqueIdentifier>{ca3a4164-f152-4ac7-b688-11a29748788d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Sound">
+      <UniqueIdentifier>{aa7f16e3-49b9-4385-a6cb-097d08687a6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ServiceLocator">
+      <UniqueIdentifier>{6d69c35d-a0ff-4b13-a9b2-2b80838bc42a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeltaTime.h">
@@ -158,6 +164,12 @@
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>Header Files\MiniginFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceLocator.h">
+      <Filter>Header Files\ServiceLocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound_System.h">
+      <Filter>Header Files\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
