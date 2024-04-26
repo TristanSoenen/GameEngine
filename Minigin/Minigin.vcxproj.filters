@@ -55,6 +55,9 @@
     <Filter Include="Header Files\ServiceLocator">
       <UniqueIdentifier>{6d69c35d-a0ff-4b13-a9b2-2b80838bc42a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Sound">
+      <UniqueIdentifier>{822398b1-6014-418f-a88e-98fc59f73a86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeltaTime.h">
@@ -171,6 +174,9 @@
     <ClInclude Include="Sound_System.h">
       <Filter>Header Files\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="SDL_Sound_System.h">
+      <Filter>Header Files\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DeltaTime.cpp">
@@ -274,6 +280,9 @@
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>Source Files\MiniginFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_Sound_System.cpp">
+      <Filter>Source Files\Sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
