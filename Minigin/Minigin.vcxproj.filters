@@ -58,6 +58,12 @@
     <Filter Include="Source Files\Sound">
       <UniqueIdentifier>{822398b1-6014-418f-a88e-98fc59f73a86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Observer and EventQueue">
+      <UniqueIdentifier>{90101620-a487-4fca-aeeb-94bfecc8fa61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Observer and EventQueue">
+      <UniqueIdentifier>{c09fb53a-ca44-4412-bfbf-b6c99cec5d1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeltaTime.h">

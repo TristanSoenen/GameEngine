@@ -14,6 +14,7 @@
 #include <thread>
 #include <iostream>
 
+
 SDL_Window* g_window{};
 
 void PrintSDLVersion()
