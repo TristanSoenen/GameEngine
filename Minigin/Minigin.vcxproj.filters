@@ -184,7 +184,7 @@
       <Filter>Header Files\Sound</Filter>
     </ClInclude>
     <ClInclude Include="Logging_Sound_System.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -292,9 +292,6 @@
     </ClCompile>
     <ClCompile Include="SDL_Sound_System.cpp">
       <Filter>Source Files\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="Logging_Sound_System.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

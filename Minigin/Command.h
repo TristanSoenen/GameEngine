@@ -100,7 +100,7 @@ namespace dae
 		void Execute() override
 		{
 			auto& ss = ServiceLocator::get_Sound_System();
-			ss.Play(1, 100.0f);
+			ss.Play(0, 100.0f);
 		}
 	};
 }

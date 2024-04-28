@@ -15,5 +15,10 @@ public:
 		_real_ss->Play(id, volume);
 		std::cout << "Playing " << id << " at volume " << volume << "\n";
 	}
+
+	void LoadSound(const std::string file) override
+	{
+		_real_ss->LoadSound(file);
+	}
 };
 
