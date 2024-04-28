@@ -64,6 +64,9 @@
     <Filter Include="Source Files\Observer and EventQueue">
       <UniqueIdentifier>{c09fb53a-ca44-4412-bfbf-b6c99cec5d1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\impl">
+      <UniqueIdentifier>{343b0849-d21d-4a6f-9a10-488528c64de5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeltaTime.h">
