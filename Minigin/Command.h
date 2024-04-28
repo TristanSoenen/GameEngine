@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "glm/glm.hpp"
 #include "DeltaTime.h"
+#include "ServiceLocator.h"
 
 namespace dae
 {
@@ -82,6 +83,24 @@ namespace dae
 		void Execute() override
 		{
 
+		}
+	};
+
+	class FireCommand : public GameActorCommand
+	{
+	public:
+		FireCommand(GameObject* actor)
+			:GameActorCommand(actor)
+		{
+
+		}
+
+		~FireCommand() = default;
+
+		void Execute() override
+		{
+			auto& ss = ServiceLocator::get_Sound_System();
+			ss.Play(1, 100.0f);
 		}
 	};
 }

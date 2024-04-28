@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 #include "Minigin.h"
 #include "InputManager.h"
 #include "SceneManager.h"
@@ -43,6 +44,15 @@ void PrintSDLVersion()
 	version = *TTF_Linked_Version();
 	printf("We are linking against SDL_ttf version %u.%u.%u.\n",
 		version.major, version.minor, version.patch);
+
+	SDL_MIXER_VERSION(&version);
+	printf("We compiled against SDL_mixer version %u.%u.%u ...\n",
+		version.major, version.minor, version.patch);
+
+	version = *Mix_Linked_Version();
+	printf("We are linking against SDL_mixer version %u.%u.%u.\n",
+		version.major, version.minor, version.patch);
+
 }
 
 dae::Minigin::Minigin(const std::string &dataPath)
@@ -52,6 +62,11 @@ dae::Minigin::Minigin(const std::string &dataPath)
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) 
 	{
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
+	}
+
+	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+	{
+		throw std::runtime_error(std::string("SDL_Audio Error: ") + SDL_GetError());
 	}
 
 	g_window = SDL_CreateWindow(
