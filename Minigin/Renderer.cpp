@@ -10,8 +10,6 @@
 #include <vector>
 #include "glm/glm.hpp"
 
-
-
 int GetOpenGLDriverIndex()
 {
 	auto openglIndex = -1;
