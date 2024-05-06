@@ -23,11 +23,12 @@ void dae::LivesUIComponent::PlayerDied()
 	m_LivesText = "# lives : " + std::to_string(m_AmountOfLives);
 	m_TextObject->SetText(m_LivesText);
 }
-void dae::LivesUIComponent::Notify(Subject* subject, Event eventFunction)
+void dae::LivesUIComponent::Notify(Event eventFunction)
 {
-	//als em genotified word verander text;
-	if (subject)
+	switch (eventFunction.type)
 	{
-		std::cout << "yes\n";
+	case PLAYER_DIED:
+		PlayerDied();
+		break;
 	}
 }

@@ -1,5 +1,4 @@
 #include "Subject.h"
-#include "Observer.h"
 
 void dae::Subject::AddObserver(dae::Observer* observer)
 {
@@ -14,10 +13,10 @@ void dae::Subject::RemoveObserver(dae::Observer* observer)
 	}
 }
 
-void dae::Subject::NotifyObservers()
+void dae::Subject::NotifyObservers(const Event& event)
 {
-	//for (dae::Observer* observer : m_Observers)
-	//{
-	//	//observer->Notify(this, );
-	//}
+	for (dae::Observer* observer : m_Observers)
+	{
+		observer->Notify(event);
+	}
 }

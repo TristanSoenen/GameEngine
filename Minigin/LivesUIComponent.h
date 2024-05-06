@@ -20,8 +20,7 @@ namespace dae
 		~LivesUIComponent() = default;
 		void Render() override;
 		void PlayerDied();
-		void Notify(Subject* subject, Event eventFunction) override;
-
+		void Notify(Event eventFunction) override;
 	private:
 		int m_AmountOfLives = 3;
 		std::string m_LivesText = "# lives : " + std::to_string(m_AmountOfLives);

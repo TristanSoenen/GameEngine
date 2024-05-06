@@ -49,6 +49,10 @@ namespace dae
 		{
 			glm::vec3 nextPos = GetGameActor()->GetWorldPosition();
 			nextPos += glm::normalize(m_Direction) * m_MoveSpeed *  DeltaTime::GetInstance().GetDeltaTime();
+			if (nextPos.x < 0)
+			{
+				nextPos.x = 0;
+			}
 			GetGameActor()->SetPosition(nextPos.x, nextPos.y);
 		}
 	};
@@ -65,23 +69,6 @@ namespace dae
 
 		void Execute() override
 		{ 
-
-		}
-	};
-
-	class IncreaseScoreCommand : public GameActorCommand
-	{
-	public:
-		IncreaseScoreCommand(GameObject* actor)
-			:GameActorCommand(actor)
-		{
-
-		}
-
-		~IncreaseScoreCommand() = default;
-
-		void Execute() override
-		{
 
 		}
 	};

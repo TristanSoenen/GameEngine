@@ -6,9 +6,17 @@
 
 namespace dae
 {
+	enum eventType
+	{
+		PLAYER_DIED,
+		FIRE,
+		ENEMY_DIED,
+		ENEMY_HIT
+	};
+
 	struct Event
 	{
-		std::any Eventfunction;
+		eventType type;
 	};
 
 	struct Rect

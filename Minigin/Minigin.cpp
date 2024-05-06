@@ -15,7 +15,6 @@
 #include <thread>
 #include <iostream>
 
-
 SDL_Window* g_window{};
 
 void PrintSDLVersion()
@@ -70,13 +69,14 @@ dae::Minigin::Minigin(const std::string &dataPath)
 	}
 
 	g_window = SDL_CreateWindow(
-		"Programming 4 assignment",
+		"Programming 4: Tristan Soenen 2DAE19 Galaga",
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		640,
 		480,
 		SDL_WINDOW_OPENGL
 	);
+
 	if (g_window == nullptr) 
 	{
 		throw std::runtime_error(std::string("SDL_CreateWindow Error: ") + SDL_GetError());
@@ -104,9 +104,6 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& input = InputManager::GetInstance();
 	auto& time = DeltaTime::GetInstance();
 
-
-
-	// todo: this update loop could use some work.
 	bool doContinue = true;
 	float lag = 0.0f;
 	const float fixed_time_Step = 1.0f / 60.0f;
@@ -117,13 +114,6 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		lag += time.GetDeltaTime();
 
 		doContinue = input.ProcessInput();
-
-	/*	if (input.TestController())
-		{
-			std::cout << "dpad up pressed\n";
-		}*/
-		
-
 		while (lag >= fixed_time_Step)
 		{
 			//fixed update voor physics

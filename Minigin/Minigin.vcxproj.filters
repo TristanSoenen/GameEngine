@@ -37,9 +37,6 @@
     <Filter Include="Source Files\IMGUI">
       <UniqueIdentifier>{ecfb17aa-f5aa-488b-93a4-6d2356d93e93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Command">
-      <UniqueIdentifier>{56a2c7dc-479a-4012-bff6-389679c54947}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Command">
       <UniqueIdentifier>{134d84e3-3bf3-4f25-b4b6-8e3a02ea26a6}</UniqueIdentifier>
     </Filter>
@@ -64,21 +61,12 @@
     <Filter Include="Source Files\Observer and EventQueue">
       <UniqueIdentifier>{c09fb53a-ca44-4412-bfbf-b6c99cec5d1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\impl">
-      <UniqueIdentifier>{343b0849-d21d-4a6f-9a10-488528c64de5}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeltaTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Structs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Observer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Subject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
@@ -189,6 +177,15 @@
     <ClInclude Include="Logging_Sound_System.h">
       <Filter>Header Files\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Header Files\Observer and EventQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="Subject.h">
+      <Filter>Header Files\Observer and EventQueue</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DeltaTime.cpp">
@@ -197,17 +194,8 @@
     <ClCompile Include="Structs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Observer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Subject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="FPSComponent.cpp">
       <Filter>Source Files\Components</Filter>
@@ -260,9 +248,6 @@
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_widgets.cpp">
       <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>Source Files\Command</Filter>
-    </ClCompile>
     <ClCompile Include="TextComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -295,6 +280,12 @@
     </ClCompile>
     <ClCompile Include="SDL_Sound_System.cpp">
       <Filter>Source Files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Subject.cpp">
+      <Filter>Source Files\Observer and EventQueue</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
