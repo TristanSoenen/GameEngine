@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BossGalaga.cpp" />
+    <ClCompile Include="BossGalagaVisualState.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Rocket.cpp" />
   </ItemGroup>
@@ -28,6 +30,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BossGalaga.h" />
+    <ClInclude Include="BossGalagaVisualState.h" />
     <ClInclude Include="Rocket.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
