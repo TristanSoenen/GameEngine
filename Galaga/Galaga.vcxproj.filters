@@ -44,5 +44,8 @@
     <ClInclude Include="BossGalaga.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="GameCommands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -32,6 +32,7 @@
   <ItemGroup>
     <ClInclude Include="BossGalaga.h" />
     <ClInclude Include="BossGalagaVisualState.h" />
+    <ClInclude Include="GameCommands.h" />
     <ClInclude Include="Rocket.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

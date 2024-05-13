@@ -56,38 +56,4 @@ namespace dae
 			GetGameActor()->SetPosition(nextPos.x, nextPos.y);
 		}
 	};
-
-	class KillCommand : public GameActorCommand
-	{
-	public:
-		KillCommand(GameObject* actor)
-			:GameActorCommand(actor)
-		{
-
-		}
-		~KillCommand() = default;
-
-		void Execute() override
-		{ 
-
-		}
-	};
-
-	class FireCommand : public GameActorCommand
-	{
-	public:
-		FireCommand(GameObject* actor)
-			:GameActorCommand(actor)
-		{
-
-		}
-
-		~FireCommand() = default;
-
-		void Execute() override
-		{
-			auto& ss = ServiceLocator::get_Sound_System();
-			ss.Play(0, 100.0f);
-		}
-	};
 }
