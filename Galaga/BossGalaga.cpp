@@ -1,9 +1,11 @@
 #include "BossGalaga.h"
+#include "RenderComponent.h"
 
 dae::BossGalaga::BossGalaga(dae::GameObject* pOwner)
 	:dae::Component(pOwner)
 {
-	//m_CurrentState = std::make_unique<dae::BossNormalState>();
+	auto renderComp = pOwner->GetComponent<dae::RenderComponent>();
+	m_CurrentState = std::move( std::make_unique<dae::BossNormalState>(renderComp));
 }
 
 void dae::BossGalaga::ChangeState(std::unique_ptr<dae::BossGalagaVisualState> state)

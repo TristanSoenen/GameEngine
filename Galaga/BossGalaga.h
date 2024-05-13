@@ -2,7 +2,6 @@
 #include <Component.h>
 #include "BossGalagaVisualState.h"
 
-
 namespace dae
 {
 	class GameObject;
@@ -11,10 +10,10 @@ namespace dae
 	public:
 		BossGalaga(GameObject* pOwner);
 		~BossGalaga() = default;
-		void ChangeState(std::unique_ptr<dae::BossGalagaVisualState> state);
+		void ChangeState(std::unique_ptr<BossGalagaVisualState> state);
 
 	private:
-		std::unique_ptr<dae::BossGalagaVisualState> m_CurrentState;
+		std::unique_ptr<BossGalagaVisualState> m_CurrentState;
 	};
 }
 
