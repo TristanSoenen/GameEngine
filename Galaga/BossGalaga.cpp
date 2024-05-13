@@ -10,6 +10,7 @@ dae::BossGalaga::BossGalaga(dae::GameObject* pOwner)
 
 void dae::BossGalaga::ChangeState(std::unique_ptr<dae::BossGalagaVisualState> state)
 {
+	//Chat gpt helped with this function will change it later.
 	m_CurrentState->OnExit();
 	m_CurrentState = std::move(state);
 	m_CurrentState->OnEnter();
