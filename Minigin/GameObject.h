@@ -21,7 +21,6 @@ namespace dae
 		virtual void Render() const;
 
 		//===================Components===========================//
-		//template <typename T> std::shared_ptr<T> AddComponent();
 		void AddComponent(std::shared_ptr<Component> component);
 		template <typename T> std::shared_ptr<T> GetComponent();
 		void RemoveComponent(std::shared_ptr<Component> component);
@@ -64,14 +63,6 @@ namespace dae
 		// todo: mmm, every gameobject has a texture? Is that correct?
 		//std::shared_ptr<Texture2D> m_texture{};
 	};
-
-	/*template<typename T>
-	inline std::shared_ptr <T> dae::GameObject::AddComponent()
-	{
-		auto component = std::make_shared<T>(this);
-		m_Components.emplace_back(component);
-		return component;
-	}*/
 
 	template<typename T>
 	inline std::shared_ptr <T> dae::GameObject::GetComponent()
