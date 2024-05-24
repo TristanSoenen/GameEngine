@@ -24,6 +24,7 @@
     <ClCompile Include="BossGalagaVisualState.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Galaga.cpp" />
+    <ClCompile Include="GalagaPlayer.cpp" />
     <ClCompile Include="Rocket.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +37,7 @@
     <ClInclude Include="BossGalaga.h" />
     <ClInclude Include="BossGalagaVisualState.h" />
     <ClInclude Include="Butterfly.h" />
+    <ClInclude Include="GalagaPlayer.h" />
     <ClInclude Include="GameCommands.h" />
     <ClInclude Include="Rocket.h" />
   </ItemGroup>
