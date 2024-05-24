@@ -4,8 +4,6 @@
 
 namespace dae
 {
-	//class GameObject;
-
 	class Component
 	{
 	public:

@@ -30,9 +30,6 @@
     <ClCompile Include="Galaga.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Rocket.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BossGalaga.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -48,11 +45,11 @@
     <ClCompile Include="GalagaPlayer.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Rocket.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Rocket.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BossGalaga.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -69,6 +66,9 @@
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="GalagaPlayer.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Rocket.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
