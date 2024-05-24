@@ -33,6 +33,12 @@
     <ClCompile Include="BossGalaga.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Bee.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Butterfly.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Rocket.h">
@@ -46,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="GameCommands.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bee.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Butterfly.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bee.cpp" />
     <ClCompile Include="BossGalaga.cpp" />
     <ClCompile Include="BossGalagaVisualState.cpp" />
+    <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Rocket.cpp" />
   </ItemGroup>
@@ -30,8 +32,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bee.h" />
     <ClInclude Include="BossGalaga.h" />
     <ClInclude Include="BossGalagaVisualState.h" />
+    <ClInclude Include="Butterfly.h" />
     <ClInclude Include="GameCommands.h" />
     <ClInclude Include="Rocket.h" />
   </ItemGroup>
