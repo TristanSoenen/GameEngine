@@ -48,6 +48,9 @@
     <ClCompile Include="Rocket.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BossGalaga.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="Rocket.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Bee.cpp" />
     <ClCompile Include="BossGalaga.cpp" />
     <ClCompile Include="BossGalagaVisualState.cpp" />
@@ -33,6 +34,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bee.h" />
     <ClInclude Include="BossGalaga.h" />
     <ClInclude Include="BossGalagaVisualState.h" />
