@@ -26,8 +26,6 @@ namespace dae
 		void RemoveComponent(std::shared_ptr<Component> component);
 		bool HasComponentBeenAdded(std::shared_ptr<Component> component);
 
-
-		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
 		glm::vec3 GetWorldPosition();
 
@@ -58,8 +56,6 @@ namespace dae
 		
 		//these can be components
 		std::shared_ptr<TransformComponent> m_TransformComponent;
-
-		Transform m_transform{};
 		// todo: mmm, every gameobject has a texture? Is that correct?
 		//std::shared_ptr<Texture2D> m_texture{};
 	};
