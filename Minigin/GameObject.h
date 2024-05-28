@@ -9,7 +9,6 @@
 namespace dae
 {
 	class Component;
-	class Texture2D;
 	class TransformComponent;
 	// todo: this should become final.
 	class GameObject
@@ -25,6 +24,11 @@ namespace dae
 		template <typename T> std::shared_ptr<T> GetComponent();
 		void RemoveComponent(std::shared_ptr<Component> component);
 		bool HasComponentBeenAdded(std::shared_ptr<Component> component);
+		void MarkForDead();
+		bool GetMarkedForDead()
+		{
+			return m_MarkForDead;
+		}
 
 		void SetPosition(float x, float y);
 		glm::vec3 GetWorldPosition();
@@ -45,6 +49,7 @@ namespace dae
 
 
 	private:
+		bool m_MarkForDead;
 		//private Functions
 		void AddChild(GameObject* child);
 		void RemoveChild(GameObject* child);
@@ -56,8 +61,6 @@ namespace dae
 		
 		//these can be components
 		std::shared_ptr<TransformComponent> m_TransformComponent;
-		// todo: mmm, every gameobject has a texture? Is that correct?
-		//std::shared_ptr<Texture2D> m_texture{};
 	};
 
 	template<typename T>

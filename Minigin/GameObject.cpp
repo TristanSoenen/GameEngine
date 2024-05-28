@@ -11,6 +11,7 @@ dae::GameObject::GameObject()
 {
 	AddComponent(std::make_shared<dae::TransformComponent>(this));
 	m_TransformComponent = GetComponent<dae::TransformComponent>();
+	m_MarkForDead = false;
 }
 
 dae::GameObject::~GameObject() = default;
@@ -66,6 +67,11 @@ bool dae::GameObject::HasComponentBeenAdded(std::shared_ptr<dae::Component> comp
 		return true;
 	}
 	return false;
+}
+
+void dae::GameObject::MarkForDead()
+{
+	m_MarkForDead = true;
 }
 
 std::shared_ptr<dae::GameObject> dae::GameObject::GetParent()
