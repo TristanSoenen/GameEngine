@@ -26,4 +26,12 @@ namespace dae
 		int width;
 		int height;
 	};
+
+	struct GameSizes
+	{
+		glm::vec2 characterSizes = { 25, 25 };
+		glm::vec2 playfieldSize = { 400, 400 };
+		glm::vec2 rocketSize = { 10, 10 };
+
+	};
 }

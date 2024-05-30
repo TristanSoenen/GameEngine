@@ -1,10 +1,12 @@
 #include "BossGalaga.h"
 #include "RenderComponent.h"
+#include "structs.h"
 
 dae::BossGalaga::BossGalaga(dae::GameObject* pOwner)
 	:dae::Component(pOwner)
 {
-	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/Boss.png", glm::vec2(20, 20)));
+	GameSizes size{};
+	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/Boss.png", size.characterSizes));
 	auto renderComp = pOwner->GetComponent<dae::RenderComponent>();
 	m_CurrentState = std::move( std::make_unique<dae::BossNormalState>(renderComp));
 }

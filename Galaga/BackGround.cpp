@@ -1,13 +1,15 @@
 #include "BackGround.h"
 #include "RenderComponent.h"
 #include "DeltaTime.h"
+#include "Structs.h"
 
 dae::BackGround::BackGround(dae::GameObject* pOwner, float speed)
 	:dae::Component(pOwner)
 	,m_Speed(speed)
 {
 	m_ResetPosition = false;
-	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/Background.png", glm::vec2(480, 480)));
+	GameSizes size{};
+	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/Background.png", size.playfieldSize));
 }
 
 void dae::BackGround::Update()
