@@ -10,7 +10,7 @@ namespace dae
 		Rocket(GameObject* pOwner);
 		~Rocket() = default;
 		
-		void Update() override;
+		//void Update() override;
 
 	private:
 
