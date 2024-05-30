@@ -18,6 +18,6 @@ void dae::RocketLauncher::FireRocket()
 	glm::vec3 pos = owner->GetWorldPosition();
 	GameSizes sizes{};
 	rocket->SetPosition(pos.x + (sizes.characterSizes.x / 2.0f) - (sizes.rocketSize.x /2.0f), pos.y - sizes.rocketSize.y);
-	auto& scene = *SceneManager::GetInstance().GetCurrentScene();
+	auto& scene = SceneManager::GetInstance().GetCurrentScene();
 	scene.Add(rocket);
 }
