@@ -18,6 +18,7 @@ bool dae::InputManager::ProcessInput()
 	if (m_Keyboard != nullptr)
 	{
 		m_Keyboard->ProcessInput();
+
 	}
 	
 	SDL_Event e;
@@ -27,9 +28,12 @@ bool dae::InputManager::ProcessInput()
 		}
 		//process event for IMGUI
 		ImGui_ImplSDL2_ProcessEvent(&e);
-		if (e.type == SDL_KEYDOWN) 
+		if (e.type == SDL_KEYUP) 
 		{
-
+			if (m_Keyboard != nullptr)
+			{
+				m_Keyboard->ProcessInputKeyUp(e);
+			}
 		}
 		if (e.type == SDL_MOUSEBUTTONDOWN) {
 			
@@ -38,42 +42,12 @@ bool dae::InputManager::ProcessInput()
 		// etc...
 	}
 
-	if (IsPressed(SDL_SCANCODE_W))
-	{
-		if (m_Commands.size() > 0)
-		{
-			m_Commands[0]->Execute();
-		}
-	}
-	if (IsPressed(SDL_SCANCODE_S))
-	{
-		if (m_Commands.size() > 0)
-		{
-			m_Commands[1]->Execute();
-		}
-	}
-	if (IsPressed(SDL_SCANCODE_D))
-	{
-		if (m_Commands.size() > 0)
-		{
-			m_Commands[2]->Execute();
-		}
-	}
-	if (IsPressed(SDL_SCANCODE_A))
-	{
-		if (m_Commands.size() > 0)
-		{
-			m_Commands[3]->Execute();
-		}
-	}
-
-
 	return true;
 }
 
-void dae::InputManager::CreateCommandKeyBoard(std::unique_ptr<dae::Command> pCommand, int key)
+void dae::InputManager::CreateCommandKeyBoard(std::unique_ptr<dae::Command> pCommand, int key, bool checkKeyUp)
 {
-	m_Keyboard->CreateCommand(std::move(pCommand), key);
+	m_Keyboard->CreateCommand(std::move(pCommand), key, checkKeyUp);
 }
 
 void dae::InputManager::CreateCommandForController(std::unique_ptr<Command> pCommand, int ControllerIndex,const int key, bool checkButtonUp)
