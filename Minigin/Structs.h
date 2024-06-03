@@ -31,7 +31,7 @@ namespace dae
 	{
 		glm::vec2 characterSizes = { 25, 25 };
 		glm::vec2 playfieldSize = { 400, 400 };
-		glm::vec2 rocketSize = { 10, 10 };
-
+		glm::vec2 rocketSize = { 5, 10 };
+		glm::vec2 GetRocketSize() const { return rocketSize; }
 	};
 }

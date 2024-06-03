@@ -18,6 +18,6 @@ namespace dae
 		std::shared_ptr<TransformComponent> m_TransformComp;
 		float m_Speed;
 		float m_Radius;
-		float m_ElapsedTime{0.0f};
+		float m_ElapsedTime{ 0.0f };
 	};
 }

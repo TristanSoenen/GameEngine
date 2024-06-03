@@ -42,10 +42,12 @@ void Scene::Update()
 
 	for (auto& object : m_objects)
 	{
-		if (object->GetMarkedForDead() == true)
+		if (object != nullptr)
 		{
-			object.reset();
-			Remove(object);
+			if (object->GetMarkedForDead() == true)
+			{
+				Remove(object);
+			}
 		}
 	}
 }
