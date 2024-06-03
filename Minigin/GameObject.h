@@ -11,7 +11,7 @@ namespace dae
 	class Component;
 	class TransformComponent;
 	// todo: this should become final.
-	class GameObject
+	class GameObject final
 	{
 	public:
 		
@@ -25,7 +25,7 @@ namespace dae
 		void RemoveComponent(std::shared_ptr<Component> component);
 		bool HasComponentBeenAdded(std::shared_ptr<Component> component);
 		void MarkForDead();
-		bool GetMarkedForDead()
+		bool GetMarkedForDead() const
 		{
 			return m_MarkForDead;
 		}
