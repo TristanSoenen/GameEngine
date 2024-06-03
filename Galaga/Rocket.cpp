@@ -7,16 +7,16 @@ dae::Rocket::Rocket(dae::GameObject* pOwner)
 	:dae::Component(pOwner)
 {
 	GameSizes size{};
-	m_RocketSize = size.GetRocketSize();
-	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/Rocket.png", m_RocketSize));
+	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/Rocket.png", size.rocketSize));
 
 	m_TrasformComp = pOwner->GetComponent<dae::TransformComponent>();
 }
 
 void dae::Rocket::Update()
 {
+	GameSizes size{};
 	glm::vec3 pos = m_TrasformComp->GetWorldPosition();
-	if (pos.y < 0.0f - m_RocketSize.y)
+	if (pos.y < 0.0f - size.rocketSize.y || pos.y > size.playfieldSize.y + size.rocketSize.y)
 	{
 		GetOwner()->MarkForDead();
 	}

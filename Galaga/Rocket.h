@@ -15,6 +15,5 @@ namespace dae
 	private:
 		std::shared_ptr<TransformComponent> m_TrasformComp;
 		const float m_Speed = 250.0f;
-		glm::vec2 m_RocketSize;
 	};
 }
