@@ -4,7 +4,7 @@
 
 namespace dae
 {
-	class Controller
+	class Controller final
 	{
 	public:
 		Controller();
@@ -15,7 +15,7 @@ namespace dae
 		bool IsPressed(unsigned int button) const;
 
 		bool ProcessInput();
-		void CreateCommand(std::unique_ptr<dae::Command> pCommand, const int key);
+		void CreateCommand(std::unique_ptr<dae::Command> pCommand, const int key, bool checkButtonUp);
 	private:
 
 		class ControllerImpl;

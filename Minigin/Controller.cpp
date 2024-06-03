@@ -16,9 +16,6 @@ dae::Controller::~Controller()
 class dae::Controller::ControllerImpl
 {
 public:
-
-	//~ControllerImpl() {};
-
 	bool IsDownThisFrame(unsigned int button) const
 	{
 		return m_ButtonsPressedThisFrame & button;
@@ -57,13 +54,32 @@ public:
 			}
 		}
 
+		if (!m_CommandsButtonUp.empty() && !m_KeysButtonUp.empty())
+		{
+			for (int index{ 0 }; index < int(m_KeysButtonUp.size()); index++)
+			{
+				if (IsUpThisFrame(m_KeysButtonUp[index]))
+				{
+					m_CommandsButtonUp[index]->Execute();
+				}
+			}
+		}
+
 		return true;
 	}
 
-	void CreateCommand(std::unique_ptr<dae::Command> pCommand, const int key)
+	void CreateCommand(std::unique_ptr<dae::Command> pCommand, const int key, bool checkButtonUp)
 	{
-		m_Commands.emplace_back(std::move(pCommand));
-		m_Keys.emplace_back(key);
+		if (checkButtonUp == true)
+		{
+			m_CommandsButtonUp.emplace_back(std::move(pCommand));
+			m_KeysButtonUp.emplace_back(key);
+		}
+		else
+		{
+			m_Commands.emplace_back(std::move(pCommand));
+			m_Keys.emplace_back(key);
+		}
 	}
 
 private:
@@ -75,6 +91,10 @@ private:
 	//Comand
 	std::vector<std::unique_ptr<dae::Command>> m_Commands;
 	std::vector<int> m_Keys;
+
+	//Commands Button Up
+	std::vector<std::unique_ptr<dae::Command>> m_CommandsButtonUp;
+	std::vector<int> m_KeysButtonUp;
 };
 
 bool dae::Controller::ProcessInput()
@@ -82,9 +102,9 @@ bool dae::Controller::ProcessInput()
 	return m_ControllerImpl->ProcessInput();
 }
 
-void dae::Controller::CreateCommand(std::unique_ptr<dae::Command> pCommand,const int key)
+void dae::Controller::CreateCommand(std::unique_ptr<dae::Command> pCommand,const int key, bool checkButtonUp)
 {
-	m_ControllerImpl->CreateCommand( std::move(pCommand), key);
+	m_ControllerImpl->CreateCommand( std::move(pCommand), key, checkButtonUp);
 }
 
 bool dae::Controller::IsDownThisFrame(unsigned int button) const

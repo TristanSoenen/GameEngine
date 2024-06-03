@@ -76,11 +76,11 @@ void dae::InputManager::CreateCommandKeyBoard(std::unique_ptr<dae::Command> pCom
 	m_Keyboard->CreateCommand(std::move(pCommand), key);
 }
 
-void dae::InputManager::CreateCommandForController(std::unique_ptr<Command> pCommand, int ControllerIndex,const int key)
+void dae::InputManager::CreateCommandForController(std::unique_ptr<Command> pCommand, int ControllerIndex,const int key, bool checkButtonUp)
 {
 	if (m_Controllers.size() > 0)
 	{
-		m_Controllers[ControllerIndex]->CreateCommand(std::move(pCommand), key);
+		m_Controllers[ControllerIndex]->CreateCommand(std::move(pCommand), key, checkButtonUp);
 	}
 }
 
