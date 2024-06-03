@@ -2,8 +2,7 @@
 #include <Component.h>
 namespace dae
 {
-	class GameObject;
-	class Butterfly : public Component
+	class Butterfly final: public Component
 	{
 	public:
 		Butterfly(GameObject* pOwner);

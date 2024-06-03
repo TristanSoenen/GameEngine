@@ -4,8 +4,7 @@
 
 namespace dae
 {
-	class GameObject;
-	class BossGalaga : public Component
+	class BossGalaga final: public Component
 	{
 	public:
 		BossGalaga(GameObject* pOwner);

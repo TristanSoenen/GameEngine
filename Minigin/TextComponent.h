@@ -6,7 +6,7 @@ namespace dae
 	class TransformComponent;
 	class Texture2D;
 
-	class TextComponent : public Component
+	class TextComponent final: public Component
 	{
 	public:
 		TextComponent(GameObject* pOwner, std::string text, std::shared_ptr<Font> font);

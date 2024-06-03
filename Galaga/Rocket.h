@@ -3,8 +3,7 @@
 
 namespace dae
 {
-	class GameObject;
-	class Rocket : public Component
+	class Rocket final: public Component
 	{
 	public:
 		Rocket(GameObject* pOwner);

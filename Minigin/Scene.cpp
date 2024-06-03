@@ -1,6 +1,5 @@
 #include "Scene.h"
 #include "GameObject.h"
-
 #include <algorithm>
 
 using namespace dae;
@@ -39,6 +38,15 @@ void Scene::Update()
 	for(auto& object : m_objects)
 	{
 		object->Update();
+	}
+
+	for (auto& object : m_objects)
+	{
+		if (object->GetMarkedForDead() == true)
+		{
+			object.reset();
+			Remove(object);
+		}
 	}
 }
 

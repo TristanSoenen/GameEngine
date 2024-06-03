@@ -3,7 +3,7 @@
 
 namespace dae
 {
-	class BackGround : public Component
+	class BackGround final : public Component
 	{
 	public:
 		BackGround(GameObject* pOwner, float speed);

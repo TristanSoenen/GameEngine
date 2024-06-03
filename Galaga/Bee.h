@@ -2,8 +2,7 @@
 #include <Component.h>
 namespace dae
 {
-	class GameObject;
-	class Bee : public Component
+	class Bee final: public Component
 	{
 	public:
 		Bee(GameObject* pOwner);

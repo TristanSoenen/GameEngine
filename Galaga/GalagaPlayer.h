@@ -3,8 +3,7 @@
 
 namespace dae
 {
-	class GameObject;
-	class GalagaPlayer : public Component
+	class GalagaPlayer final: public Component
 	{
 	public:
 		GalagaPlayer(GameObject* pOwner);

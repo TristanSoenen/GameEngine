@@ -2,7 +2,7 @@
 #include <Component.h>
 namespace dae
 {
-	class RocketLauncher : public Component
+	class RocketLauncher final: public Component
 	{
 	public:
 		RocketLauncher(GameObject* pOwner);
