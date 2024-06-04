@@ -2,6 +2,7 @@
 #include "RenderComponent.h"
 #include "TransformComponent.h"
 #include "CollisionComponent.h"
+#include "DeltaTime.h"
 #include "Structs.h"
 
 dae::Rocket::Rocket(dae::GameObject* pOwner, bool firedByPlayer)
@@ -20,7 +21,6 @@ dae::Rocket::Rocket(dae::GameObject* pOwner, bool firedByPlayer)
 	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/Rocket.png", size.rocketSize));
 
 	m_TrasformComp = pOwner->GetComponent<dae::TransformComponent>();
-
 	pOwner->AddComponent(std::make_shared<dae::CollisionComponent>(pOwner, dae::CollisionTypes::Projectile));
 }
 

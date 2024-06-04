@@ -46,48 +46,4 @@ namespace dae
 			}
 		}
 	};
-
-	class ChangeStateCommandHit : public GameActorCommand
-	{
-	public:
-		ChangeStateCommandHit(GameObject* actor)
-			:GameActorCommand(actor)
-		{
-
-		}
-
-		~ChangeStateCommandHit() = default;
-
-		void Execute() override
-		{
-			//call change state function on boss galaga
-			auto actor = GetGameActor();
-			auto galageBoss = actor->GetComponent<BossGalaga>();
-			auto renderComp = actor->GetComponent<RenderComponent>();
-			galageBoss->ChangeState(std::make_unique<BossHitState>(renderComp));
-		}
-	};
-
-	class ChangeStateCommandDeath : public GameActorCommand
-	{
-	public:
-		ChangeStateCommandDeath(GameObject* actor)
-			:GameActorCommand(actor)
-		{
-
-		}
-
-		~ChangeStateCommandDeath() = default;
-
-		void Execute() override
-		{
-			//call change state function on boss galaga
-			auto actor = GetGameActor();
-			auto galageBoss = actor->GetComponent<BossGalaga>();
-			auto renderComp = actor->GetComponent<RenderComponent>();
-			galageBoss->ChangeState(std::make_unique<BossExplode>(renderComp));
-		}
-	};
 }
-
-

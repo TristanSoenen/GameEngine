@@ -2,7 +2,9 @@
 #include "GameObject.h"
 #include "glm/glm.hpp"
 #include "DeltaTime.h"
+#include "Structs.h"
 #include "ServiceLocator.h"
+
 
 namespace dae
 {
@@ -50,11 +52,16 @@ namespace dae
 			auto actor = GetGameActor();
 			if (actor->GetMarkedForDead() == false)
 			{
+				GameSizes sizes{};
 				glm::vec3 nextPos = actor->GetWorldPosition();
 				nextPos += glm::normalize(m_Direction) * m_MoveSpeed * DeltaTime::GetInstance().GetDeltaTime();
 				if (nextPos.x < 0)
 				{
 					nextPos.x = 0;
+				}
+				else if (nextPos.x > (sizes.playfieldSize.x - sizes.characterSizes.x))
+				{
+					nextPos.x = sizes.playfieldSize.x - sizes.characterSizes.x;
 				}
 				GetGameActor()->SetPosition(nextPos.x, nextPos.y);
 			}

@@ -4,7 +4,6 @@
 void dae::CollisionManager::Update()
 {
 	CheckForCollisionBetweenProjectilesAndEnemies(m_Enemies, m_Projectiles);
-
 	CheckForCollisionBetweenPlayers(m_Players, m_Enemies);
 }
 
