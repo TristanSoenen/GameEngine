@@ -10,6 +10,8 @@ namespace dae
 		~RocketLauncher() = default;
 		void FireRocket();
 	private:
+		int m_RocketCount = 0;
+		const int m_MaxRocketFiredCount = 2;
 		bool m_AttachedToPlayer;
 	};
 }

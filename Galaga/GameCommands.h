@@ -41,8 +41,6 @@ namespace dae
 			{
 				auto rocketlauncher = actor->GetComponent<RocketLauncher>();
 				rocketlauncher->FireRocket();
-				auto& ss = ServiceLocator::get_Sound_System();
-				ss.Play(0, 100.0f);
 			}
 		}
 	};

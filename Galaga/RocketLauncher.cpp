@@ -6,6 +6,7 @@
 #include "Scene.h"
 #include "Observer.h"
 #include "Structs.h"
+#include "ServiceLocator.h"
 
 dae::RocketLauncher::RocketLauncher(dae::GameObject* pOwner, bool onPlayer)
 	:dae::Component(pOwner)
@@ -16,16 +17,25 @@ dae::RocketLauncher::RocketLauncher(dae::GameObject* pOwner, bool onPlayer)
 
 void dae::RocketLauncher::FireRocket()
 {
-	auto owner = GetOwner();
-	auto rocket = std::make_shared<dae::GameObject>();
-	if (m_AttachedToPlayer == true)
+	if (m_RocketCount < m_MaxRocketFiredCount)
 	{
-		rocket->AddComponent(std::make_shared<dae::Rocket>(rocket.get(), m_AttachedToPlayer));
-		//rocket->GetComponent<dae::CollisionComponent>()->AddCollisionObserver(m_observerComp);
+		auto owner = GetOwner();
+		auto rocket = std::make_shared<dae::GameObject>();
+		if (m_AttachedToPlayer == true)
+		{
+			rocket->AddComponent(std::make_shared<dae::Rocket>(rocket.get(), m_AttachedToPlayer));
+		}
+		glm::vec3 pos = owner->GetWorldPosition();
+		GameSizes sizes{};
+		rocket->SetPosition(pos.x + (sizes.characterSizes.x / 2.0f) - (sizes.rocketSize.x / 2.0f), pos.y - sizes.rocketSize.y);
+		auto& scene = SceneManager::GetInstance().GetCurrentScene();
+		scene.Add(rocket);
+		if (m_AttachedToPlayer == true)
+		{
+			auto& ss = ServiceLocator::get_Sound_System();
+			ss.Play(0, 100.0f);
+		}
+		++m_RocketCount;
 	}
-	glm::vec3 pos = owner->GetWorldPosition();
-	GameSizes sizes{};
-	rocket->SetPosition(pos.x + (sizes.characterSizes.x / 2.0f) - (sizes.rocketSize.x /2.0f), pos.y - sizes.rocketSize.y);
-	auto& scene = SceneManager::GetInstance().GetCurrentScene();
-	scene.Add(rocket);
+
 }
