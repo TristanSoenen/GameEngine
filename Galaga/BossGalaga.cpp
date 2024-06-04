@@ -30,6 +30,8 @@ void dae::BossGalaga::Notify(dae::Event event)
 	case HIT:
 		if (m_AlreadyHit == true)
 		{
+			auto owner = GetOwner();
+			owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
 			GetOwner()->MarkForDead();
 		}
 		else

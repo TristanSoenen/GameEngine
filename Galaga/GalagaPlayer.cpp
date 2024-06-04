@@ -28,7 +28,9 @@ void dae::GalagaPlayer::Notify(dae::Event event)
 	{
 	case HIT:
 		m_FreezePosition = true;
-		GetOwner()->MarkForDead();
+		auto owner = GetOwner();
+		owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+		owner->MarkForDead();
 		break;
 	}
 }

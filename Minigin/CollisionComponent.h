@@ -14,11 +14,14 @@ namespace dae
 		void Hit();
 		void HitEnemy();
 		void MarkForDead();
+		void RemoveFromCollisionVector();
 		void AddCollisionObserver(Observer* obsevrer);
 		Rect GetSize() const { return m_CollisionRect; }
+		bool CanBeRemovedFromMangager() const { return m_RemoveFromVector; }
 	private:
 		std::shared_ptr<TransformComponent> m_TransformComp;
 		CollisionTypes m_Type;
 		Rect m_CollisionRect;
+		bool m_RemoveFromVector = false;
 	};
 }

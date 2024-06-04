@@ -66,6 +66,11 @@ void dae::CollisionComponent::MarkForDead()
 	}
 }
 
+void dae::CollisionComponent::RemoveFromCollisionVector()
+{
+	m_RemoveFromVector = true;
+}
+
 void dae::CollisionComponent::Update()
 {
 	glm::vec3 pos = m_TransformComp->GetWorldPosition();

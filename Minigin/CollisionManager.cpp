@@ -8,7 +8,7 @@ void dae::CollisionManager::Update()
 }
 
 void dae::CollisionManager::CheckForCollisionBetweenPlayers(
-	std::vector<dae::CollisionComponent*> vec1, std::vector<dae::CollisionComponent*> vec2)
+	std::vector<dae::CollisionComponent*>& vec1, std::vector<dae::CollisionComponent*>& vec2)
 {
 	for (auto& collisionComp : vec1)
 	{
@@ -23,12 +23,17 @@ void dae::CollisionManager::CheckForCollisionBetweenPlayers(
 			}
 		}
 	}
+
+	CheckToRemove(vec1);
+	CheckToRemove(vec2);
 }
 
+
+
 void dae::CollisionManager::CheckForCollisionBetweenProjectilesAndEnemies(
-	std::vector<dae::CollisionComponent*> enemyVec, std::vector<dae::CollisionComponent*> projectileVec)
+	std::vector<dae::CollisionComponent*>& enemyVec, std::vector<dae::CollisionComponent*>& projectileVec)
 {
-	for (auto& projectile : m_Projectiles)
+	for (auto& projectile : projectileVec)
 	{
 		dae::Rect projectileSize = projectile->GetSize();
 		for (auto& enemy : enemyVec)
@@ -36,12 +41,17 @@ void dae::CollisionManager::CheckForCollisionBetweenProjectilesAndEnemies(
 			dae::Rect enemySize = enemy->GetSize();
 			if (CheckRectOverlap(projectileSize, enemySize) == true)
 			{
-				projectile->MarkForDead();
+				if (projectile != nullptr)
+				{
+					projectile->MarkForDead();
+				}
 				enemy->Hit();
 			}
 		}
 	}
 
+	CheckToRemove(enemyVec);
+	CheckToRemove(projectileVec);
 }
 
 bool dae::CollisionManager::CheckRectOverlap(Rect r1, Rect r2) const
@@ -66,6 +76,38 @@ void dae::CollisionManager::AddToCollisionVector(dae::CollisionComponent* comp, 
 		break;
 	case dae::Projectile:
 		m_Projectiles.emplace_back(comp);
+		break;
+	}
+}
+
+void dae::CollisionManager::CheckToRemove(std::vector<CollisionComponent*>& vec)
+{
+	for (auto& comp : vec)
+	{
+		if (comp->CanBeRemovedFromMangager() == true)
+		{
+			Remove(comp, vec);
+		}
+	}
+}
+
+void dae::CollisionManager::Remove(dae::CollisionComponent* object, std::vector<dae::CollisionComponent*>& vec)
+{
+	vec.erase(std::remove(vec.begin(), vec.end(), object), vec.end());
+}
+
+void dae::CollisionManager::Remove(CollisionComponent* object, CollisionTypes type)
+{
+	switch (type)
+	{
+	case dae::Player:
+		m_Players.erase(std::remove(m_Players.begin(), m_Players.end(), object), m_Players.end());
+		break;
+	case dae::Enemy:
+		m_Enemies.erase(std::remove(m_Enemies.begin(), m_Enemies.end(), object), m_Enemies.end());
+		break;
+	case dae::Projectile:
+		m_Projectiles.erase(std::remove(m_Projectiles.begin(), m_Projectiles.end(), object), m_Projectiles.end());
 		break;
 	}
 }

@@ -2,6 +2,7 @@
 #include "RenderComponent.h"
 #include "TransformComponent.h"
 #include "CollisionComponent.h"
+#include "CollisionManager.h"
 #include "DeltaTime.h"
 #include "Structs.h"
 
@@ -28,9 +29,12 @@ void dae::Rocket::Update()
 {
 	GameSizes size{};
 	glm::vec3 pos = m_TrasformComp->GetWorldPosition();
-	if (pos.y < 0.0f - size.rocketSize.y || pos.y > size.playfieldSize.y + size.rocketSize.y)
+	if (pos.y < 0.0f - size.rocketSize.y)
 	{
-		GetOwner()->MarkForDead();
+		auto owner = GetOwner();
+		CollisionManager::GetInstance().Remove(owner->GetComponent<dae::CollisionComponent>().get(), dae::CollisionTypes::Projectile);
+		;
+		owner->MarkForDead();
 	}
 	pos += m_Direction * m_Speed * DeltaTime::GetInstance().GetDeltaTime();
 	m_TrasformComp->SetPosition(pos.x, pos.y, pos.z);
