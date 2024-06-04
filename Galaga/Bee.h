@@ -1,6 +1,7 @@
 #pragma once
 #include <Component.h>
 #include "Observer.h"
+
 namespace dae
 {
 	class Bee final: public Component, Observer

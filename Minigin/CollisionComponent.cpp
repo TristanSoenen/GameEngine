@@ -59,7 +59,11 @@ void dae::CollisionComponent::HitEnemy()
 
 void dae::CollisionComponent::MarkForDead()
 {
-	GetOwner()->MarkForDead();
+	auto owner = GetOwner();
+	if (owner != nullptr)
+	{
+		owner->MarkForDead();
+	}
 }
 
 void dae::CollisionComponent::Update()
