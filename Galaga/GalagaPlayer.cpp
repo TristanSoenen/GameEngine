@@ -13,7 +13,7 @@ dae::GalagaPlayer::GalagaPlayer(GameObject* pOwner)
 	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/StarShip.png", size.characterSizes));
 
 	//add rocket Launcher
-	pOwner->AddComponent(std::make_shared<dae::RocketLauncher>(pOwner));
+	pOwner->AddComponent(std::make_shared<dae::RocketLauncher>(pOwner, true));
 
 	//add CollisionComponent
 	pOwner->AddComponent(std::make_shared<dae::CollisionComponent>(pOwner, dae::CollisionTypes::Player));

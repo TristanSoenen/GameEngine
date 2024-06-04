@@ -11,7 +11,9 @@ namespace dae
 		CollisionComponent(GameObject* pOwner, CollisionTypes type);
 		~CollisionComponent() = default;
 		void Update() override;
-		void PlayerAndEnemyOverlap();
+		void Hit();
+		void HitEnemy();
+		void MarkForDead();
 		void AddCollisionObserver(Observer* obsevrer);
 		Rect GetSize() const { return m_CollisionRect; }
 	private:

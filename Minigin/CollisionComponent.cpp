@@ -43,11 +43,23 @@ void dae::CollisionComponent::AddCollisionObserver(dae::Observer* obsevrer)
 	AddObserver(obsevrer);
 }
 
-void dae::CollisionComponent::PlayerAndEnemyOverlap()
+void dae::CollisionComponent::Hit()
 {
 	dae::Event event{};
 	event.type = HIT;
 	NotifyObservers(event);
+}
+
+void dae::CollisionComponent::HitEnemy()
+{
+	dae::Event event{};
+	event.type = ENEMY_HIT;
+	NotifyObservers(event);
+}
+
+void dae::CollisionComponent::MarkForDead()
+{
+	GetOwner()->MarkForDead();
 }
 
 void dae::CollisionComponent::Update()
