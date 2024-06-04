@@ -18,7 +18,6 @@ bool dae::InputManager::ProcessInput()
 	if (m_Keyboard != nullptr)
 	{
 		m_Keyboard->ProcessInput();
-
 	}
 	
 	SDL_Event e;

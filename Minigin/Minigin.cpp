@@ -10,6 +10,7 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
+#include "CollisionManager.h"
 #include "DeltaTime.h"
 #include <chrono>
 #include <thread>
@@ -103,6 +104,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 	auto& time = DeltaTime::GetInstance();
+	auto& collisionManager = CollisionManager::GetInstance();
 
 	bool doContinue = true;
 	float lag = 0.0f;
@@ -121,6 +123,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 			lag -= fixed_time_Step;
 		}
 		sceneManager.Update();
+		collisionManager.Update();
 		renderer.Render();
 
 		const auto sleep_time = std::chrono::high_resolution_clock::now() + std::chrono::milliseconds(int(fixed_time_Step * 1000)) - std::chrono::high_resolution_clock::now();

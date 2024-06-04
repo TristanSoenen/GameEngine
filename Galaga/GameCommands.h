@@ -37,10 +37,13 @@ namespace dae
 		void Execute() override
 		{
 			auto actor = GetGameActor();
-			auto rocketlauncher = actor->GetComponent<RocketLauncher>();
-			rocketlauncher->FireRocket();
-			auto& ss = ServiceLocator::get_Sound_System();
-			ss.Play(0, 100.0f);
+			if (actor->GetMarkedForDead() == false)
+			{
+				auto rocketlauncher = actor->GetComponent<RocketLauncher>();
+				rocketlauncher->FireRocket();
+				auto& ss = ServiceLocator::get_Sound_System();
+				ss.Play(0, 100.0f);
+			}
 		}
 	};
 

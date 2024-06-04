@@ -42,7 +42,10 @@ void dae::GameObject::Render() const
 
 void dae::GameObject::SetPosition(float x, float y)
 {
-	m_TransformComponent->SetPosition(x, y, 0.0f);
+	if (m_FreezePos == false && m_MarkForDead == false)
+	{
+		m_TransformComponent->SetPosition(x, y, 0.0f);
+	}
 }
 
 glm::vec3 dae::GameObject::GetWorldPosition()
@@ -81,8 +84,8 @@ std::shared_ptr<dae::GameObject> dae::GameObject::GetParent()
 
 void dae::GameObject::SetParent(std::shared_ptr<dae::GameObject> parent, bool keepWorldPosition)
 {
-	glm::vec3 oldPos = m_TransformComponent->GetWorldPosition();
-	// 1. Check if the new parent is valid(not itself or one of its children)
+	//glm::vec3 oldPos = m_TransformComponent->GetWorldPosition();
+
 	if (m_Parent == parent)
 	{
 		return;
@@ -104,21 +107,17 @@ void dae::GameObject::SetParent(std::shared_ptr<dae::GameObject> parent, bool ke
 		}
 	}
 
-
-	// 2. Remove itself from the previus parent(RemoveChild?).
 	if (m_Parent)
 	{
 		m_Parent->RemoveChild(this);
 	}
-	// 3. Set the given parent on itself.
+
 	m_Parent = parent;
-	// 4. add itself as a child to the given parent(AddChild?).
+
 	if (m_Parent)
 	{
 		m_Parent->AddChild(this);
 	}
-	// 5. UpdatePosition, roation and scale.
-
 }
 
 size_t dae::GameObject::GetChildrenCount()

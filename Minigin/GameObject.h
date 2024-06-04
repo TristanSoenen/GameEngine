@@ -49,6 +49,7 @@ namespace dae
 
 	private:
 		bool m_MarkForDead;
+		bool m_FreezePos = false;
 		//private Functions
 		void AddChild(GameObject* child);
 		void RemoveChild(GameObject* child);

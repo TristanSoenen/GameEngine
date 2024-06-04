@@ -47,13 +47,17 @@ namespace dae
 		~MoveCommand() = default;
 		void Execute() override
 		{
-			glm::vec3 nextPos = GetGameActor()->GetWorldPosition();
-			nextPos += glm::normalize(m_Direction) * m_MoveSpeed *  DeltaTime::GetInstance().GetDeltaTime();
-			if (nextPos.x < 0)
+			auto actor = GetGameActor();
+			if (actor->GetMarkedForDead() == false)
 			{
-				nextPos.x = 0;
+				glm::vec3 nextPos = actor->GetWorldPosition();
+				nextPos += glm::normalize(m_Direction) * m_MoveSpeed * DeltaTime::GetInstance().GetDeltaTime();
+				if (nextPos.x < 0)
+				{
+					nextPos.x = 0;
+				}
+				GetGameActor()->SetPosition(nextPos.x, nextPos.y);
 			}
-			GetGameActor()->SetPosition(nextPos.x, nextPos.y);
 		}
 	};
 }

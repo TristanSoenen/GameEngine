@@ -1,0 +1,22 @@
+#pragma once
+#include "Component.h"
+#include "Subject.h"
+#include "Structs.h"
+namespace dae
+{
+	class TransformComponent;
+	class CollisionComponent : public Component, Subject
+	{
+	public:
+		CollisionComponent(GameObject* pOwner, CollisionTypes type);
+		~CollisionComponent() = default;
+		void Update() override;
+		void PlayerAndEnemyOverlap();
+		void AddCollisionObserver(Observer* obsevrer);
+		Rect GetSize() const { return m_CollisionRect; }
+	private:
+		std::shared_ptr<TransformComponent> m_TransformComp;
+		CollisionTypes m_Type;
+		Rect m_CollisionRect;
+	};
+}

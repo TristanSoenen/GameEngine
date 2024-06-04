@@ -9,7 +9,7 @@ namespace dae
 	enum eventType
 	{
 		PLAYER_DIED,
-		FIRE,
+		HIT,
 		ENEMY_DIED,
 		ENEMY_HIT
 	};
@@ -27,12 +27,19 @@ namespace dae
 		eventType type;
 	};
 
+	enum CollisionTypes
+	{
+		Player,
+		Enemy,
+		Projectile
+	};
+
 	struct Rect
 	{
-		int x;
-		int y;
-		int width;
-		int height;
+		float x;
+		float y;
+		float width;
+		float height;
 	};
 
 	struct GameSizes
