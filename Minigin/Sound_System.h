@@ -14,5 +14,5 @@ public:
 	virtual void Play(const sound_id id, const int volume) = 0;
 	virtual void Update() = 0;
 	virtual void LoadSound(const std::string file) = 0;
+	virtual void QuitRunning() = 0;
 };
-

@@ -10,6 +10,7 @@ public:
 	void Play(const sound_id id, const int volume) override;
 	void Update() override;
 	void LoadSound(const std::string file) override;
+	void QuitRunning() override;
 private:
 	class Soundimpl;
 	std::unique_ptr<Soundimpl> m_Soundimpl;

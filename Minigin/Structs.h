@@ -10,7 +10,9 @@ namespace dae
 	{
 		PLAYER_DIED,
 		HIT,
-		ENEMY_DIED,
+		BEE_DIED,
+		BUTTERFLY_DIED,
+		BOSSGALAGA_DIED,
 		ENEMY_HIT
 	};
 

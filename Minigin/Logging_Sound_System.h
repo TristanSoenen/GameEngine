@@ -25,5 +25,10 @@ public:
 	{
 		_real_ss->Update();
 	};
+
+	void QuitRunning() override
+	{
+		_real_ss->QuitRunning();
+	}
 };
 

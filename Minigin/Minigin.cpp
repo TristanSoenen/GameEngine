@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
+#include "SDL_Sound_System.h"
 #include "Minigin.h"
 #include "InputManager.h"
 #include "SceneManager.h"
@@ -16,6 +17,7 @@
 #include <thread>
 #include <iostream>
 #include "ServiceLocator.h"
+
 
 SDL_Window* g_window{};
 
@@ -106,16 +108,17 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& input = InputManager::GetInstance();
 	auto& time = DeltaTime::GetInstance();
 	auto& collisionManager = CollisionManager::GetInstance();
-	auto& sound = ServiceLocator::get_Sound_System();
+	auto sound = ServiceLocator::get_Sound_System();
 
 	bool doContinue = true;
 	float lag = 0.0f;
 	const float fixed_time_Step = 1.0f / 60.0f;
+	//ROBBE HIJZEN HELPED MAKING IT THREADED!
+	std::jthread soundThread{ &Sound_System::Update, sound };
 
 	while (doContinue)
 	{
 		time.Update();
-		sound.Update();
 		lag += time.GetDeltaTime();
 
 		doContinue = input.ProcessInput();
@@ -132,4 +135,5 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		const auto sleep_time = std::chrono::high_resolution_clock::now() + std::chrono::milliseconds(int(fixed_time_Step * 1000)) - std::chrono::high_resolution_clock::now();
 		std::this_thread::sleep_for(sleep_time);
 	}
+	sound->QuitRunning();
 }

@@ -28,6 +28,7 @@
     <ClCompile Include="GalagaPlayer.cpp" />
     <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="RocketLauncher.cpp" />
+    <ClCompile Include="ScoreComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Minigin\Minigin.vcxproj">
@@ -44,6 +45,7 @@
     <ClInclude Include="GameCommands.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RocketLauncher.h" />
+    <ClInclude Include="ScoreComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

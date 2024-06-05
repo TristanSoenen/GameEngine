@@ -32,6 +32,9 @@ void dae::BossGalaga::Notify(dae::Event event)
 		{
 			auto owner = GetOwner();
 			owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+			dae::Event notifyEvent{};
+			notifyEvent.type = BOSSGALAGA_DIED;
+			NotifyObservers(notifyEvent);
 			GetOwner()->MarkForDead();
 		}
 		else
@@ -41,4 +44,9 @@ void dae::BossGalaga::Notify(dae::Event event)
 		}
 		break;
 	}
+}
+
+void dae::BossGalaga::AddObserverToBoss(dae::Observer* obs)
+{
+	AddObserver(obs);
 }
