@@ -46,7 +46,6 @@ void Scene::Update()
 		{
 			if (object->GetMarkedForDead() == true)
 			{
-				//object->Update();
 				object.reset();
 				Remove(object);
 			}

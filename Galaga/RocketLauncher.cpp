@@ -33,9 +33,8 @@ void dae::RocketLauncher::FireRocket()
 		if (m_AttachedToPlayer == true)
 		{
 			auto& ss = ServiceLocator::get_Sound_System();
-			ss.Play(0, 100.0f);
+			ss.Play(0, 100);
 		}
 		++m_RocketCount;
 	}
-
 }

@@ -4,8 +4,9 @@
 
 class Null_Sound_System final : public Sound_System
 {
-	void Play(const sound_id, const float) override {};
+	void Play(const sound_id, const int) override {};
 	void LoadSound(const std::string file) override {};
+	void Update() override {};
 };
 // 	
 class ServiceLocator final

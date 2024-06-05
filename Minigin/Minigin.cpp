@@ -15,6 +15,7 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include "ServiceLocator.h"
 
 SDL_Window* g_window{};
 
@@ -105,6 +106,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& input = InputManager::GetInstance();
 	auto& time = DeltaTime::GetInstance();
 	auto& collisionManager = CollisionManager::GetInstance();
+	auto& sound = ServiceLocator::get_Sound_System();
 
 	bool doContinue = true;
 	float lag = 0.0f;
@@ -113,6 +115,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	while (doContinue)
 	{
 		time.Update();
+		sound.Update();
 		lag += time.GetDeltaTime();
 
 		doContinue = input.ProcessInput();

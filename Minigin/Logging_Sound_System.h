@@ -10,7 +10,7 @@ public:
 	Logging_Sound_System(std::unique_ptr<Sound_System>&& ss) : _real_ss(std::move(ss)) {}
 	virtual ~Logging_Sound_System() = default;
 
-	void Play(const sound_id id, const float volume) override
+	void Play(const sound_id id, const int volume) override
 	{
 		_real_ss->Play(id, volume);
 		std::cout << "Playing " << id << " at volume " << volume << "\n";
@@ -20,5 +20,10 @@ public:
 	{
 		_real_ss->LoadSound(file);
 	}
+
+	void Update() override 
+	{
+		_real_ss->Update();
+	};
 };
 
