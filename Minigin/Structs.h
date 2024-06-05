@@ -10,10 +10,12 @@ namespace dae
 	{
 		PLAYER_DIED,
 		HIT,
+		FIRED,
 		BEE_DIED,
 		BUTTERFLY_DIED,
 		BOSSGALAGA_DIED,
-		ENEMY_HIT
+		ENEMY_HIT,
+		GAME_OVER
 	};
 
 	enum ControllerButtons

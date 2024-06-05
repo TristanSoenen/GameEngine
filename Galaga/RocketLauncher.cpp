@@ -36,5 +36,11 @@ void dae::RocketLauncher::FireRocket()
 			ss->Play(0, 100);
 		}
 		++m_RocketCount;
+		if (m_AttachedToPlayer)
+		{
+			Event eve{};
+			eve.type = FIRED;
+			NotifyObservers(eve);
+		}
 	}
 }

@@ -55,6 +55,10 @@ void dae::Rocket::Notify(dae::Event event)
 	case HIT:
 		auto owner = GetOwner();
 		ReportRocketDead();
+		if (m_FiredByPlayer)
+		{
+			m_launcher->IncrementHitCount();
+		}
 		owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
 		owner->MarkForDead();
 		break;

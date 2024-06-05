@@ -13,7 +13,7 @@ namespace dae
 		~GalagaPlayer() = default;
 		void Notify(Event event) override;
 		void Update() override;
-		void AddObserverToPlayer(dae::Observer* obs)
+		void AddObserverToPlayer(Observer* obs)
 		{
 			AddObserver(obs);
 		}

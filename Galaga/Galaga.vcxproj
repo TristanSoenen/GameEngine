@@ -26,6 +26,7 @@
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="GalagaPlayer.cpp" />
+    <ClCompile Include="GameComponent.cpp" />
     <ClCompile Include="LivesComponent.cpp" />
     <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="RocketLauncher.cpp" />
@@ -44,6 +45,7 @@
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="GalagaPlayer.h" />
     <ClInclude Include="GameCommands.h" />
+    <ClInclude Include="GameComponent.h" />
     <ClInclude Include="LivesComponent.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RocketLauncher.h" />
