@@ -13,7 +13,6 @@ namespace dae
 		void Update() override;
 		void Hit();
 		void HitEnemy();
-		void MarkForDead();
 		void RemoveFromCollisionVector();
 		void AddCollisionObserver(Observer* obsevrer);
 		Rect GetSize() const { return m_CollisionRect; }

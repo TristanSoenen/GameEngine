@@ -57,15 +57,6 @@ void dae::CollisionComponent::HitEnemy()
 	NotifyObservers(event);
 }
 
-void dae::CollisionComponent::MarkForDead()
-{
-	auto owner = GetOwner();
-	if (owner->GetMarkedForDead() == false)
-	{
-		owner->MarkForDead();
-	}
-}
-
 void dae::CollisionComponent::RemoveFromCollisionVector()
 {
 	m_RemoveFromVector = true;

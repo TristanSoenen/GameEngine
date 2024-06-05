@@ -23,7 +23,7 @@ void dae::RocketLauncher::FireRocket()
 		auto rocket = std::make_shared<dae::GameObject>();
 		if (m_AttachedToPlayer == true)
 		{
-			rocket->AddComponent(std::make_shared<dae::Rocket>(rocket.get(), m_AttachedToPlayer));
+			rocket->AddComponent(std::make_shared<dae::Rocket>(rocket.get(), m_AttachedToPlayer, this));
 		}
 		glm::vec3 pos = owner->GetWorldPosition();
 		GameSizes sizes{};

@@ -41,10 +41,7 @@ void dae::CollisionManager::CheckForCollisionBetweenProjectilesAndEnemies(
 			dae::Rect enemySize = enemy->GetSize();
 			if (CheckRectOverlap(projectileSize, enemySize) == true)
 			{
-				if (projectile != nullptr)
-				{
-					projectile->MarkForDead();
-				}
+				projectile->Hit();
 				enemy->Hit();
 			}
 		}
