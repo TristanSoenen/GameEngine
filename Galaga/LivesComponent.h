@@ -1,21 +1,21 @@
 #pragma once
 #include <Component.h>
-#include "Observer.h"
+#include <Observer.h>
 
 namespace dae
 {
 	class Font;
 	class TextComponent;
-	class ScoreComponent : public Component, Observer
+	class LivesComponent : public Component, Observer
 	{
 	public:
-		ScoreComponent(GameObject* pOwner, std::shared_ptr<Font> font);
-		~ScoreComponent() = default;
+		LivesComponent(GameObject* pOwner, int lives, std::shared_ptr<Font> font);
+		~LivesComponent() = default;
 		void Notify(Event event);
 		Observer* GetObserver() { return this; }
 	private:
 		std::shared_ptr<TextComponent> m_TextComp;
 		std::shared_ptr<Font> m_font;
-		int m_Score = 0;
+		int m_lives;
 	};
 }

@@ -27,10 +27,16 @@ void dae::GalagaPlayer::Notify(dae::Event event)
 	switch (event.type)
 	{
 	case HIT:
-		m_FreezePosition = true;
-		auto owner = GetOwner();
-		owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
-		owner->MarkForDead();
+		--m_Lives;
+		if (m_Lives < 0)
+		{
+			auto owner = GetOwner();
+			owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+			owner->MarkForDead();
+		}
+		dae::Event notifyEvent{};
+		notifyEvent.type = PLAYER_DIED;
+		NotifyObservers(notifyEvent);
 		break;
 	}
 }
