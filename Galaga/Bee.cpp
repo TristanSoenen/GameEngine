@@ -21,6 +21,9 @@ void dae::Bee::Notify(dae::Event event)
 	case HIT:
 		auto owner = GetOwner();
 		owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+		dae::Event notifyEvent{};
+		notifyEvent.type = BEE_DIED;
+		NotifyObservers(notifyEvent);
 		owner->MarkForDead();
 		break;
 	}

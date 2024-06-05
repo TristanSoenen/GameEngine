@@ -21,6 +21,9 @@ void dae::Butterfly::Notify(dae::Event event)
 	case HIT:
 		auto owner = GetOwner();
 		owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+		dae::Event notifyEvent{};
+		notifyEvent.type = BUTTERFLY_DIED;
+		NotifyObservers(notifyEvent);
 		owner->MarkForDead();
 		break;
 	}
