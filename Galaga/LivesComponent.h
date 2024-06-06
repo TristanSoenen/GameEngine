@@ -17,5 +17,6 @@ namespace dae
 		std::shared_ptr<TextComponent> m_TextComp;
 		std::shared_ptr<Font> m_font;
 		int m_lives;
+		const std::string m_text = "Lives Left: ";
 	};
 }

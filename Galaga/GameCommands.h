@@ -1,6 +1,5 @@
 #pragma once
 #include "Command.h"
-#include "BossGalagaVisualState.h"
 #include "RocketLauncher.h"
 
 namespace dae

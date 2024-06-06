@@ -7,7 +7,7 @@ dae::LivesComponent::LivesComponent(dae::GameObject* pOwner, int lives, std::sha
 	,m_lives(lives)
 	,m_font(font)
 {
-	pOwner->AddComponent(std::make_shared<dae::TextComponent>(pOwner, std::to_string(m_lives), font));
+	pOwner->AddComponent(std::make_shared<dae::TextComponent>(pOwner, m_text + std::to_string(m_lives), font));
 	m_TextComp = pOwner->GetComponent<dae::TextComponent>();
 }
 
@@ -17,7 +17,7 @@ void dae::LivesComponent::Notify(dae::Event event)
 	{
 	case PLAYER_DIED:
 		--m_lives;
-		m_TextComp->SetText(std::to_string(m_lives));
+		m_TextComp->SetText(m_text + std::to_string(m_lives));
 		break;
 	}
 }
