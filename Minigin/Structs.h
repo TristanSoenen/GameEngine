@@ -1,7 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <memory>
-#include <any>
 
 
 namespace dae
@@ -36,6 +35,13 @@ namespace dae
 		Player,
 		Enemy,
 		Projectile
+	};
+
+	enum EnemyTypes
+	{
+		BEE,
+		BUTTERFLY,
+		BOSS
 	};
 
 	struct Rect

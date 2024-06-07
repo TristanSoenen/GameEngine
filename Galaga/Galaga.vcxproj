@@ -22,8 +22,8 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Bee.cpp" />
     <ClCompile Include="BossGalaga.cpp" />
-    <ClCompile Include="BossGalagaVisualState.cpp" />
     <ClCompile Include="Butterfly.cpp" />
+    <ClCompile Include="EnemyStates.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="GalagaPlayer.cpp" />
     <ClCompile Include="GameComponent.cpp" />
@@ -41,7 +41,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bee.h" />
     <ClInclude Include="BossGalaga.h" />
-    <ClInclude Include="BossGalagaVisualState.h" />
+    <ClInclude Include="EnemyStates.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="GalagaPlayer.h" />
     <ClInclude Include="GameCommands.h" />

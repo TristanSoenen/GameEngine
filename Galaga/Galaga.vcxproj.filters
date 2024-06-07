@@ -22,9 +22,6 @@
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{bff92d49-1054-476f-b6ba-0eb998757cfe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\States">
-      <UniqueIdentifier>{d832013b-8e20-4c61-b355-6cf59ee8a46f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Galaga.cpp">
@@ -38,9 +35,6 @@
     </ClCompile>
     <ClCompile Include="Butterfly.cpp">
       <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="BossGalagaVisualState.cpp">
-      <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="GalagaPlayer.cpp">
       <Filter>Source Files\Components</Filter>
@@ -63,6 +57,9 @@
     <ClCompile Include="GameComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyStates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BossGalaga.h">
@@ -77,7 +74,7 @@
     <ClInclude Include="Butterfly.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="BossGalagaVisualState.h">
+    <ClInclude Include="EnemyStates.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="GalagaPlayer.h">
