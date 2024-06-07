@@ -1,10 +1,9 @@
 #include "EnemyStates.h"
 #include "TransformComponent.h"
 #include "EnemyComponent.h"
-#include "BossGalaga.h"
 #include "DeltaTime.h"
 
-
+//!!!!!!!!!!!!This function Comes from chat gpt!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 std::vector<glm::vec2> generateCirclePoints(double cx, double cy, double radius, int numPoints, double startAngleDeg)
 {
 	std::vector<glm::vec2> points;
@@ -36,8 +35,8 @@ glm::vec2 Seek(glm::vec2& currentPos, glm::vec2 targetPos)
 
 void dae::EnterGame::OnEnter()
 {
-	m_LeftSidePath.clear();
-	m_LeftSidePath = generateCirclePoints(125.0, 260.0, 90, 8, 0.0);
+	//m_LeftSidePath.push_back();
+	m_LeftSidePath = generateCirclePoints(125.0, 260.0, 80, 8, 0.0);
 	m_LeftSidePath.push_back(m_LeftSidePath[0]);
 	m_LeftSidePath.push_back(m_SquadPos);
 }
@@ -50,13 +49,10 @@ void dae::EnterGame::Update()
 		glm::vec2 pos = transformComp->GetPosition();
 		if (glm::length(m_LeftSidePath[index] - pos) < 2.0f)
 		{
-			if (index == int(m_LeftSidePath.size()))
+			if (index == int(m_LeftSidePath.size() -1))
 			{
-				index = 0;
-				//m_LeftSidePath.clear();
-				//auto comp = m_pOwner->GetComponent<dae::EnemyComponent>();
-				//comp->ChangeState(std::make_unique<dae::InPosition>(m_pOwner));
-
+				auto comp = m_pOwner->GetComponent<dae::EnemyComponent>();
+				comp->ChangeState(std::make_unique<InPosition>(m_pOwner));
 			}
 			else
 			{
@@ -92,8 +88,7 @@ void dae::Attack::Update()
 	}
 	else
 	{
-		auto comp = m_pOwner->GetComponent<dae::BossGalaga>();
-		comp->ChangeState(std::make_unique<dae::GoBack>(m_pOwner));
+
 	}
 }
 

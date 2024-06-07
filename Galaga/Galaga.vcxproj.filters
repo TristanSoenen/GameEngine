@@ -27,15 +27,6 @@
     <ClCompile Include="Galaga.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BossGalaga.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Bee.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Butterfly.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
     <ClCompile Include="GalagaPlayer.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -68,17 +59,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BossGalaga.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="GameCommands.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Bee.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Butterfly.h">
-      <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="EnemyStates.h">
       <Filter>Header Files\States</Filter>
