@@ -39,37 +39,61 @@ void dae::EnemyComponent::Notify(Event event)
 	switch (event.type)
 	{
 	case HIT:
-		auto owner = GetOwner();
 		switch (m_Type)
 		{
 		case dae::BEE:
-			notifyEvent.type = BEE_DIED;
-			owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+			if (m_InPosition == true)
+			{
+				notifyEvent.type = BEE_INPOS_DIED;
+			}
+			else
+			{
+				notifyEvent.type = BEE_DIED;
+			}
 			NotifyObservers(notifyEvent);
-			GetOwner()->MarkForDead();
+			RemoveCollisionAndMarkForDead();
 			break;
 		case dae::BUTTERFLY:
-			notifyEvent.type = BUTTERFLY_DIED;
-			owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+			if (m_InPosition == true)
+			{
+				notifyEvent.type = BUTTERFLY_INPOS_DIED;
+			}
+			else
+			{
+				notifyEvent.type = BUTTERFLY_DIED;
+			}
 			NotifyObservers(notifyEvent);
-			GetOwner()->MarkForDead();
+			RemoveCollisionAndMarkForDead();
 			break;
 		case dae::BOSS:
 			if (m_AlreadyHit == true)
 			{
-				notifyEvent.type = BOSSGALAGA_DIED;
-				owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+				if (m_InPosition == true)
+				{
+					notifyEvent.type = BOSSGALAGA_INPOS_DIED;
+				}
+				else
+				{
+					notifyEvent.type = BOSSGALAGA_DIED;
+				}
 				NotifyObservers(notifyEvent);
-				GetOwner()->MarkForDead();
+				RemoveCollisionAndMarkForDead();
 			}
 			else
 			{
+				auto owner = GetOwner();
 				owner->GetComponent<dae::RenderComponent>()->SetTexture("../Data/BossHit.png");
 				m_AlreadyHit = true;
 			}
 			break;
 		}
 		break;
-
 	}
+}
+
+void dae::EnemyComponent::RemoveCollisionAndMarkForDead()
+{
+	auto owner = GetOwner();
+	owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
+	GetOwner()->MarkForDead();
 }

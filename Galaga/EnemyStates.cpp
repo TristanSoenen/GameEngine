@@ -67,6 +67,12 @@ void dae::EnterGame::Update()
 	}
 }
 
+void dae::InPosition::OnEnter()
+{
+	auto comp = m_pOwner->GetComponent<dae::EnemyComponent>();
+	comp->SetInPosition(true);
+}
+
 void dae::InPosition::Update()
 {
 	if (m_pOwner->GetComponent<dae::EnemyComponent>()->GetAttack() == true)
@@ -74,6 +80,12 @@ void dae::InPosition::Update()
 		auto comp = m_pOwner->GetComponent<dae::EnemyComponent>();
 		comp->ChangeState(std::make_unique<dae::Attack>(m_pOwner));
 	}
+}
+
+void dae::InPosition::OnExit()
+{
+	auto comp = m_pOwner->GetComponent<dae::EnemyComponent>();
+	comp->SetInPosition(false);
 }
 
 glm::vec2 targetPos{ 400, 400 };

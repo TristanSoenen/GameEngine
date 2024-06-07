@@ -57,7 +57,9 @@ namespace dae
 
 		}
 
+		void OnEnter() override;
 		void Update() override;
+		void OnExit() override;
 	};
 
 	class Attack : public EnemyState

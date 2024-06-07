@@ -13,6 +13,7 @@ namespace dae
 		EnemyComponent(GameObject* pOwner, glm::vec2 squadPos, EnemyTypes type);
 		~EnemyComponent() = default;
 		void Update() override;
+		void RemoveCollisionAndMarkForDead();
 
 		void ChangeState(std::unique_ptr<EnemyState> state)
 		{
