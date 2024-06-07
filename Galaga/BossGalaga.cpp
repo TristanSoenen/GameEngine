@@ -9,7 +9,7 @@ dae::BossGalaga::BossGalaga(dae::GameObject* pOwner)
 	GameSizes size{};
 	pOwner->AddComponent(std::make_shared<dae::RenderComponent>(pOwner, "../Data/Boss.png", size.characterSizes));
 	auto renderComp = pOwner->GetComponent<dae::RenderComponent>();
-	m_CurrentState = std::make_unique<dae::EnterGame>(pOwner, EnemyTypes::BOSS);
+	m_CurrentState = std::make_unique<dae::InPosition>(pOwner);
 
 	pOwner->AddComponent(std::make_shared<dae::CollisionComponent>(pOwner, dae::CollisionTypes::Enemy));
 	pOwner->GetComponent <dae::CollisionComponent>()->AddCollisionObserver(this);

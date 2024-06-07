@@ -3,12 +3,10 @@
 #include "GameObject.h"
 #include "DeltaTime.h"
 
-
 namespace dae
 {
 	class EnterGame;
 	class InPosition;
-
 	class EnemyState
 	{
 	public:
@@ -24,22 +22,24 @@ namespace dae
 		virtual void Update() {};
 	};
 
-
-
 	class EnterGame final: public EnemyState
 	{
 	private:
 		GameObject* m_pOwner;
-		EnemyTypes m_Type;
-
+		glm::vec2 m_SquadPos;
+		std::vector<glm::vec2> m_LeftSidePath;
+		int index = 0;
+		
 	public:
 
-		EnterGame(GameObject* pOwner, EnemyTypes type)
+		EnterGame(GameObject* pOwner, glm::vec2 endPos)
 			:m_pOwner(pOwner)
-			,m_Type(type)
+			,m_SquadPos(endPos)
 		{
 
 		};
+
+		void OnEnter() override;
 
 		void Update() override;
 
@@ -57,18 +57,38 @@ namespace dae
 
 		}
 
-		void OnEnter() override
-		{
-			std::cout << "changedState\n";
-		}
-
-		void Update() override
-		{
-
-		}
-
-	private:
-
+		void Update() override;
 	};
+
+	class Attack : public EnemyState
+	{
+	private:
+		GameObject* m_pOwner;
+
+	public:
+		Attack(GameObject* pOwner)
+			:m_pOwner(pOwner)
+		{
+
+		}
+
+		void Update() override;
+	};
+
+	class GoBack : public EnemyState
+	{
+	private:
+		GameObject* m_pOwner;
+
+	public:
+		GoBack(GameObject* pOwner)
+			:m_pOwner(pOwner)
+		{
+
+		}
+
+		void Update() override;
+	};
+	
 
 }

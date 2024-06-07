@@ -23,6 +23,8 @@
     <ClCompile Include="Bee.cpp" />
     <ClCompile Include="BossGalaga.cpp" />
     <ClCompile Include="Butterfly.cpp" />
+    <ClCompile Include="EnemyComponent.cpp" />
+    <ClCompile Include="EnemyManagerComponent.cpp" />
     <ClCompile Include="EnemyStates.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="GalagaPlayer.cpp" />
@@ -41,6 +43,8 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bee.h" />
     <ClInclude Include="BossGalaga.h" />
+    <ClInclude Include="EnemyComponent.h" />
+    <ClInclude Include="EnemyManagerComponent.h" />
     <ClInclude Include="EnemyStates.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="GalagaPlayer.h" />
