@@ -10,7 +10,11 @@ namespace dae
 		EnemyManagerComponent(GameObject* pOwner);
 		~EnemyManagerComponent() = default;
 		void Update() override;
+		void AllEnemiesInPosition(bool value);
+		void AddEnemy(EnemyComponent* enemy);
+		void RemoveEnemy(EnemyComponent* enemy);
 	private:
-		std::vector<std::shared_ptr<EnemyComponent>> m_Enemies;
+		bool m_AttackFlag = false;
+		std::vector<EnemyComponent*> m_Enemies;
 	};
 }

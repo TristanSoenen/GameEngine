@@ -31,12 +31,15 @@ namespace dae
 
 		void SetInPosition(bool value) { m_InPosition = value; }
 		bool GetInPositions() const { return m_InPosition; }
+		bool IsALive() const { return m_Alive; }
+
 	private:
 		EnemyTypes m_Type;
 		glm::vec2 m_PositionInSquad;
 		bool m_AlreadyHit = false;
 		bool m_Attack = false;
 		bool m_InPosition = false;
+		bool m_Alive = true;
 		std::unique_ptr<EnemyState> m_CurrentState;
     };
 

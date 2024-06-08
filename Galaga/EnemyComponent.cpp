@@ -93,6 +93,7 @@ void dae::EnemyComponent::Notify(Event event)
 
 void dae::EnemyComponent::RemoveCollisionAndMarkForDead()
 {
+	m_Alive = false;
 	auto owner = GetOwner();
 	owner->GetComponent<CollisionComponent>()->RemoveFromCollisionVector();
 	GetOwner()->MarkForDead();

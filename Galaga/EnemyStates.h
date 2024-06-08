@@ -75,16 +75,20 @@ namespace dae
 		}
 
 		void Update() override;
+
+		void OnExit() override;
 	};
 
 	class GoBack : public EnemyState
 	{
 	private:
 		GameObject* m_pOwner;
+		glm::vec2 m_SquadPos;
 
 	public:
-		GoBack(GameObject* pOwner)
+		GoBack(GameObject* pOwner, glm::vec2 endPos)
 			:m_pOwner(pOwner)
+			,m_SquadPos(endPos)
 		{
 
 		}
