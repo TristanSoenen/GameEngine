@@ -58,41 +58,79 @@ void dae::GameComponent::CreateLevel(std::string beeFile, std::string butterflyF
 		}
 		nextScene->Add(currentSceneGameObject);
 	}
-
+	int halfindex = 0;
+	int enemyCountLeft = 0;
+	int enemyCountRight = 0;
 	////adding enemies to the game with filepositions
 	std::vector<glm::vec2> positions;
 	ReadPositions(positions, beeFile);
+	halfindex = int(positions.size() / 2) - 1;
 	for (int i = 0; i < int(positions.size()); i++)
 	{
 		auto bee = std::make_shared<dae::GameObject>();
-		bee->AddComponent(std::make_shared<dae::EnemyComponent>(bee.get(), positions[i], dae::EnemyTypes::BEE));
+		if (i > halfindex)
+		{
+			bee->AddComponent(std::make_shared<dae::EnemyComponent>(bee.get(), positions[i], dae::EnemyTypes::BEE, false));
+			bee->SetPosition(400.0f + (50.0f * enemyCountRight), 400 + (50.0f * enemyCountRight));
+			++enemyCountRight;
+		}
+		else
+		{
+			bee->AddComponent(std::make_shared<dae::EnemyComponent>(bee.get(), positions[i], dae::EnemyTypes::BEE, true));
+			bee->SetPosition(-50.0f * enemyCountLeft, 400 + (50.0f * enemyCountLeft));
+			++enemyCountLeft;
+		}
 		auto beeComp2 = bee->GetComponent<dae::EnemyComponent>();
 		beeComp2->AddObserverToEnemy(scoreComp->GetObserver());
-		bee->SetPosition(-50.0f * i, 400);
 		enemyManagerComp->AddEnemy(beeComp2.get());
 		nextScene->Add(bee);
 	}
+	halfindex = 0;
 	positions.clear();
 	ReadPositions(positions, butterflyFile);
+	halfindex = int(positions.size() / 2) - 1;
 	for (int i = 0; i < int(positions.size()); i++)
 	{
 		auto btfly = std::make_shared<dae::GameObject>();
-		btfly->AddComponent(std::make_shared<dae::EnemyComponent>(btfly.get(), positions[i], dae::EnemyTypes::BUTTERFLY));
+
+		if (i > halfindex)
+		{
+			btfly->AddComponent(std::make_shared<dae::EnemyComponent>(btfly.get(), positions[i], dae::EnemyTypes::BUTTERFLY, false));
+			btfly->SetPosition(800.0f + (50.0f * enemyCountRight), 800 + (50.0f * enemyCountRight));
+			++enemyCountRight;
+		}
+		else
+		{
+			btfly->AddComponent(std::make_shared<dae::EnemyComponent>(btfly.get(), positions[i], dae::EnemyTypes::BUTTERFLY, true));
+			btfly->SetPosition( -400 -50.0f * enemyCountLeft, 800 + (50.0f * enemyCountLeft));
+			++enemyCountLeft;
+		}
 		auto btlfyComp = btfly->GetComponent<dae::EnemyComponent>();
 		btlfyComp->AddObserverToEnemy(scoreComp->GetObserver());
-		btfly->SetPosition(-50.0f * i, 400);
 		enemyManagerComp->AddEnemy(btlfyComp.get());
 		nextScene->Add(btfly);
 	}
+	halfindex = 0;
 	positions.clear();
 	ReadPositions(positions, bossFile);
+	halfindex = int(positions.size() / 2) - 1;
 	for (int i = 0; i < int(positions.size()); i++)
 	{
 		auto bs = std::make_shared<dae::GameObject>();
-		bs->AddComponent(std::make_shared<dae::EnemyComponent>(bs.get(), positions[i], dae::EnemyTypes::BOSS));
+		if (i > halfindex)
+		{
+			bs->AddComponent(std::make_shared<dae::EnemyComponent>(bs.get(), positions[i], dae::EnemyTypes::BOSS, false));
+			bs->SetPosition(1200.0f + (50.0f * enemyCountRight), 1200 +(50.0f * enemyCountRight));
+			++enemyCountRight;
+		}
+		else
+		{
+			bs->AddComponent(std::make_shared<dae::EnemyComponent>(bs.get(), positions[i], dae::EnemyTypes::BOSS, true));
+			bs->SetPosition(-800 -50.0f * enemyCountLeft, 1200 + (50.0f * enemyCountLeft));
+			++enemyCountLeft;
+		}
 		auto bsComp = bs->GetComponent<dae::EnemyComponent>();
 		bsComp->AddObserverToEnemy(scoreComp->GetObserver());
-		bs->SetPosition(-50.0f * i, 400);
 		enemyManagerComp->AddEnemy(bsComp.get());
 		nextScene->Add(bs);
 	}

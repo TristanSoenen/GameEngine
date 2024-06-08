@@ -2,7 +2,7 @@
 #include "RenderComponent.h"
 #include "CollisionComponent.h"
 
-dae::EnemyComponent::EnemyComponent(dae::GameObject* pOwner, glm::vec2 squadPos, EnemyTypes type)
+dae::EnemyComponent::EnemyComponent(dae::GameObject* pOwner, glm::vec2 squadPos, EnemyTypes type, bool leftSide)
 	:dae::Component(pOwner)
 	,m_PositionInSquad(squadPos)
 	,m_Type(type)
@@ -22,7 +22,7 @@ dae::EnemyComponent::EnemyComponent(dae::GameObject* pOwner, glm::vec2 squadPos,
 		break;
 	}
 	auto renderComp = pOwner->GetComponent<dae::RenderComponent>();
-	m_CurrentState = std::make_unique<dae::EnterGame>(pOwner, m_PositionInSquad);
+	m_CurrentState = std::make_unique<dae::EnterGame>(pOwner, m_PositionInSquad, leftSide);
 	m_CurrentState->OnEnter();
 	pOwner->AddComponent(std::make_shared<dae::CollisionComponent>(pOwner, dae::CollisionTypes::Enemy));
 	pOwner->GetComponent <dae::CollisionComponent>()->AddCollisionObserver(this);

@@ -10,7 +10,7 @@ namespace dae
     class EnemyComponent : public Component, Subject, Observer
     {
 	public:
-		EnemyComponent(GameObject* pOwner, glm::vec2 squadPos, EnemyTypes type);
+		EnemyComponent(GameObject* pOwner, glm::vec2 squadPos, EnemyTypes type, bool leftSide);
 		~EnemyComponent() = default;
 		void Update() override;
 		void RemoveCollisionAndMarkForDead();

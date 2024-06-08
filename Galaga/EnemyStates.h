@@ -27,20 +27,21 @@ namespace dae
 	private:
 		GameObject* m_pOwner;
 		glm::vec2 m_SquadPos;
-		std::vector<glm::vec2> m_LeftSidePath;
+		std::vector<glm::vec2> m_Path;
 		int index = 0;
+		bool m_LeftSide;
 		
 	public:
 
-		EnterGame(GameObject* pOwner, glm::vec2 endPos)
+		EnterGame(GameObject* pOwner, glm::vec2 endPos, bool leftSide)
 			:m_pOwner(pOwner)
 			,m_SquadPos(endPos)
+			,m_LeftSide(leftSide)
 		{
 
 		};
 
 		void OnEnter() override;
-
 		void Update() override;
 
 	};
@@ -75,7 +76,6 @@ namespace dae
 		}
 
 		void Update() override;
-
 		void OnExit() override;
 	};
 
