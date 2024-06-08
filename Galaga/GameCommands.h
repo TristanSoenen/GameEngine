@@ -64,23 +64,4 @@ namespace dae
  			rocketlauncher->SwitchToHighScores();
 		}
 	};
-
-	class ResetCommand : public GameActorCommand
-	{
-	public:
-		ResetCommand(GameObject* actor)
-			:GameActorCommand(actor)
-		{
-
-		}
-
-		~ResetCommand() = default;
-
-		void Execute() override
-		{
-			auto actor = GetGameActor();
-			auto rocketlauncher = actor->GetComponent<GameComponent>();
-			rocketlauncher->SwitchToHighScores();
-		}
-	};
 }

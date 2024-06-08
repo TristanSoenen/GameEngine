@@ -12,7 +12,6 @@ namespace dae
 		GalagaPlayer(GameObject* pOwner);
 		~GalagaPlayer() = default;
 		void Notify(Event event) override;
-		void Update() override;
 		void AddObserverToPlayer(Observer* obs)
 		{
 			AddObserver(obs);
@@ -20,7 +19,6 @@ namespace dae
 
 		int GetLives() const { return m_Lives; }
 	private:
-		bool m_FreezePosition;
 		std::shared_ptr<TransformComponent> m_TranformComp;
 		int m_Lives = 3;
 	};

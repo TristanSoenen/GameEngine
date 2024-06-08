@@ -193,6 +193,12 @@ void dae::GameComponent::CreateShotSFiredLevel()
 	text4->AddComponent(std::make_shared<dae::TextComponent>(text4.get(), "HITMISSRATIO: %" + std::to_string(percentage), font));
 	text4->SetPosition(10, 250);
 	nextScene->Add(text4);
+	
+	auto text5 = std::make_shared<dae::GameObject>();
+	text5->AddComponent(std::make_shared<dae::TextComponent>(text5.get(), "Press P/B (forcontroller)", font));
+	text5->SetPosition(10, 300);
+	nextScene->Add(text5);
+
 	m_ShowResults = true;
 	dae::SceneManager::GetInstance().SetCurrentScene(3);
 }

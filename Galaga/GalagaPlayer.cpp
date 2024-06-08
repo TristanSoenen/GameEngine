@@ -43,12 +43,3 @@ void dae::GalagaPlayer::Notify(dae::Event event)
 		break;
 	}
 }
-
-void dae::GalagaPlayer::Update()
-{
-	if (m_FreezePosition == true)
-	{
-		auto currentPos = m_TranformComp->GetWorldPosition();
-		m_TranformComp->SetPosition(currentPos.x, currentPos.y, 0.0f);
-	}
-}

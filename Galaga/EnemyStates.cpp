@@ -21,6 +21,7 @@ void dae::EnterGame::OnEnter()
 
 void dae::EnterGame::Update()
 {
+	//chat gpt helped here with the indexes
 	if (index < int(m_Path.size()))
 	{
 		auto transformComp = m_pOwner->GetComponent<dae::TransformComponent>();
@@ -88,6 +89,7 @@ void dae::Attack::OnEnter()
 
 void dae::Attack::Update()
 {
+	//chat gpt helped here with the indexes
 	if (index < int(m_Path.size()))
 	{
 		auto transformComp = m_pOwner->GetComponent<dae::TransformComponent>();
