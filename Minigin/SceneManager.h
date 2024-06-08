@@ -14,7 +14,11 @@ namespace dae
 		void Fixed_Update();
 		void Update();
 		void Render();
-		Scene& GetCurrentScene() { return *m_scenes[m_CurrentScene].get(); }
+		Scene* GetCurrentScene() { return m_scenes[m_CurrentScene].get(); }
+		Scene* GetSceneAtIndex(int index) 
+		{
+				return m_scenes[index].get();
+		}
 		void SetCurrentScene(int sceneIndex);
 	private:
 		friend class Singleton<SceneManager>;
