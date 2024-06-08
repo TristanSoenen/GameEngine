@@ -17,7 +17,7 @@ dae::RocketLauncher::RocketLauncher(dae::GameObject* pOwner, bool onPlayer)
 
 void dae::RocketLauncher::FireRocket()
 {
-	if (m_RocketCount < m_MaxRocketFiredCount)
+	if (m_RocketCount < 2)
 	{
 		auto owner = GetOwner();
 		auto rocket = std::make_shared<dae::GameObject>();

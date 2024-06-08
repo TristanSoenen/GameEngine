@@ -14,8 +14,8 @@ namespace dae
 	private:
 		void CreateGameOverScreen();
 		void CreateLevel1();
-		void CreateLevel2();
-		void CreateLevel3();
+		void CreateLevel(std::string beeFile, std::string butterflyFile, std::string bossFile, int levelidx);
+		void CreateShotSFiredLevel();
 		int m_CurrentLevel = 0;
 		int m_TotalShotsFired = 0;
 		int m_Hits = 0;
