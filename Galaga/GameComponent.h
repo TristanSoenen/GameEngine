@@ -12,8 +12,6 @@ namespace dae
 		void Notify(Event event);
 		Observer* GetObserver() { return this; }
 	private:
-		void CreateGameOverScreen();
-		void CreateLevel1();
 		void CreateLevel(std::string beeFile, std::string butterflyFile, std::string bossFile, int levelidx);
 		void CreateShotSFiredLevel();
 		int m_CurrentLevel = 0;

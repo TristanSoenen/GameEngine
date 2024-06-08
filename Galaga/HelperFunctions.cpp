@@ -6,7 +6,7 @@
 
 void ReadPositions(std::vector<glm::vec2>& positions, std::string filename)
 {
-	//most of it is from chat gpt with some changesd
+	//!!!!!!!!!!most of it is from chat gpt with some changes i made!!!!!!!!!!!
 	std::ifstream file(filename);
 
 	if (!file.is_open()) {
@@ -31,7 +31,7 @@ void ReadPositions(std::vector<glm::vec2>& positions, std::string filename)
 		std::stringstream ss(line);
 		float x, y;
 		if (ss >> x >> y) {
-			positions.push_back(glm::vec2(x, y));
+			positions.emplace_back(glm::vec2(x, y));
 		}
 	}
 }
@@ -57,7 +57,7 @@ std::vector<glm::vec2> generateCirclePoints(double cx, double cy, double radius,
 		double x = cx + radius * cos(angleRad);
 		double y = cy + radius * sin(angleRad);
 
-		points.push_back({ x, y });
+		points.emplace_back(glm::vec2{ x, y });
 	}
 
 	return points;

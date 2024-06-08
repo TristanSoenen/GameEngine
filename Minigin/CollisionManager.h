@@ -4,7 +4,7 @@
 #include <vector>
 namespace dae
 {
-	class CollisionManager : public Singleton<CollisionManager>
+	class CollisionManager final : public Singleton<CollisionManager>
 	{
 	public:
 		void Update();

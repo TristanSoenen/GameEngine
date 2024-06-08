@@ -67,6 +67,8 @@ namespace dae
 	{
 	private:
 		GameObject* m_pOwner;
+		std::vector<glm::vec2> m_Path;
+		int index = 0;
 
 	public:
 		Attack(GameObject* pOwner)
@@ -75,6 +77,7 @@ namespace dae
 
 		}
 
+		void OnEnter() override;
 		void Update() override;
 		void OnExit() override;
 	};

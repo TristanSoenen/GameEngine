@@ -5,7 +5,7 @@
 namespace dae
 {
 	class TransformComponent;
-	class CollisionComponent : public Component, Subject
+	class CollisionComponent final : public Component, Subject
 	{
 	public:
 		CollisionComponent(GameObject* pOwner, CollisionTypes type);

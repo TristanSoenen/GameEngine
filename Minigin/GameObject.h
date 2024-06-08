@@ -4,7 +4,6 @@
 #include "glm/glm.hpp"
 #include <vector>
 #include <string>
-#include "iostream"
 
 namespace dae
 {
@@ -13,7 +12,6 @@ namespace dae
 	class GameObject final
 	{
 	public:
-		
 		virtual void Fixed_Update();
 		virtual void Update();
 		virtual void Render() const;
@@ -44,8 +42,6 @@ namespace dae
 		void SetParent(std::shared_ptr<GameObject> parent, bool keepWorldPosition);
 		size_t GetChildrenCount();
 		GameObject* GetChildAt(int index);
-		//bool IsChild(GameObject* parent);
-
 
 	private:
 		bool m_MarkForDead;
@@ -63,6 +59,8 @@ namespace dae
 		std::shared_ptr<TransformComponent> m_TransformComponent;
 	};
 
+
+	//Chat GPT helped here
 	template<typename T>
 	inline std::shared_ptr <T> dae::GameObject::GetComponent()
 	{

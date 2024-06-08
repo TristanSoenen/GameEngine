@@ -5,7 +5,7 @@
 namespace dae
 {
 	class GameObject;
-	class TransformComponent : public Component
+	class TransformComponent final : public Component
 	{
 	public:
 		TransformComponent(GameObject* pOwner);

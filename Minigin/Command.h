@@ -32,7 +32,7 @@ namespace dae
 		virtual ~GameActorCommand() = default;
 	};
 
-	class MoveCommand : public GameActorCommand
+	class MoveCommand final : public GameActorCommand
 	{
 		glm::vec3 m_Direction;
 		float m_MoveSpeed;

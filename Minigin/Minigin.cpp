@@ -113,7 +113,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	bool doContinue = true;
 	float lag = 0.0f;
 	const float fixed_time_Step = 1.0f / 60.0f;
-	//ROBBE HIJZEN HELPED MAKING IT THREADED!
+	//!!!ROBBE HIJZEN HELPED MAKING IT THREADED!!!
 	std::jthread soundThread{ &Sound_System::Update, sound };
 
 	while (doContinue)

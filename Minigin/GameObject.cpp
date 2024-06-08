@@ -84,8 +84,6 @@ std::shared_ptr<dae::GameObject> dae::GameObject::GetParent()
 
 void dae::GameObject::SetParent(std::shared_ptr<dae::GameObject> parent, bool keepWorldPosition)
 {
-	//glm::vec3 oldPos = m_TransformComponent->GetWorldPosition();
-
 	if (m_Parent == parent)
 	{
 		return;

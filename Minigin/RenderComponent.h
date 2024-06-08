@@ -7,7 +7,7 @@ namespace dae
 	class Texture2D;
 	class TransformComponent;
 
-	class RenderComponent : public Component
+	class RenderComponent final : public Component
 	{
 	public:
 		RenderComponent(GameObject* pOwner, const std::string& file);

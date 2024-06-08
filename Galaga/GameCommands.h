@@ -1,6 +1,7 @@
 #pragma once
 #include "Command.h"
 #include "RocketLauncher.h"
+#include "GameComponent.h"
 
 namespace dae
 {
@@ -41,6 +42,25 @@ namespace dae
 				auto rocketlauncher = actor->GetComponent<RocketLauncher>();
 				rocketlauncher->FireRocket();
 			}
+		}
+	};
+
+	class MuteCommand : public GameActorCommand
+	{
+	public:
+		MuteCommand(GameObject* actor)
+			:GameActorCommand(actor)
+		{
+
+		}
+
+		~MuteCommand() = default;
+
+		void Execute() override
+		{
+			auto actor = GetGameActor();
+			auto gameComp = actor->GetComponent<GameComponent>();
+			gameComp;
 		}
 	};
 }

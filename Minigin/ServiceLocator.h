@@ -9,7 +9,7 @@ class Null_Sound_System final : public Sound_System
 	void Update() override {};
 	void QuitRunning() override {};
 };
-// 	
+
 class ServiceLocator final
 {
 	static std::unique_ptr<Sound_System> _ss_instance;

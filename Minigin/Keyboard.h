@@ -14,6 +14,7 @@ namespace dae
 
 		bool ProcessInput();
 		bool ProcessInputKeyUp(SDL_Event event);
+		//chat Gpt helped with the is pressed function
 		bool IsPressed(unsigned int key) { const Uint8* state = SDL_GetKeyboardState(NULL);  return state[key]; }
 		void CreateCommand(std::unique_ptr<dae::Command> pCommand, const int key, bool checkKeyUp);
 

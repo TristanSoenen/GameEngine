@@ -7,6 +7,7 @@
 #include "Renderer.h"
 #include "Texture2D.h"
 
+//all code is from TextObject.cpp
 dae::TextComponent::TextComponent(dae::GameObject* pOwner, std::string text, std::shared_ptr<dae::Font> font)
 	:Component(pOwner)
 	,m_needsUpdate(true)
