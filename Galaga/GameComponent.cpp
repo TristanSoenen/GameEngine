@@ -29,20 +29,11 @@ void dae::GameComponent::Notify(Event event)
 		++m_TotalShotsFired;
 		break;
 	case LEVEL_COMPLETE:
-		if (m_CurrentLevel == 1) CreateLevel("../Data/Formation1Bees.txt", "../Data/Formation1Butterflies.txt", "../Data/Formation1Boss.txt", 2);;
-		if (m_CurrentLevel == 0) CreateLevel("../Data/Formation1Bees.txt", "../Data/Formation1Butterflies.txt", "../Data/Formation1Boss.txt", 1);
+		if (m_CurrentLevel == 2) CreateShotSFiredLevel();
+		if (m_CurrentLevel == 1) CreateLevel("../Data/Formation3Bees.txt", "../Data/Formation3Butterflies.txt", "../Data/Formation3Boss.txt", 2);;
+		if (m_CurrentLevel == 0) CreateLevel("../Data/Formation2Bees.txt", "../Data/Formation2Butterflies.txt", "../Data/Formation2Boss.txt", 1);
 		break;
 	}
-}
-
-void dae::GameComponent::CreateGameOverScreen()
-{
-
-}
-
-void dae::GameComponent::CreateLevel1()
-{
-
 }
 
 void dae::GameComponent::CreateLevel(std::string beeFile, std::string butterflyFile, std::string bossFile, int levelidx)
