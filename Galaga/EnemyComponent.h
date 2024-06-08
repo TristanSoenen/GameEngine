@@ -7,7 +7,7 @@
 
 namespace dae
 {
-    class EnemyComponent : public Component, Subject, Observer
+    class EnemyComponent final: public Component, Subject, Observer
     {
 	public:
 		EnemyComponent(GameObject* pOwner, glm::vec2 squadPos, EnemyTypes type, bool leftSide);

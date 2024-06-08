@@ -4,7 +4,7 @@
 
 namespace dae
 {
-	class GameComponent : public Component, Observer
+	class GameComponent final : public Component, Observer
 	{
 	public:
 		GameComponent(GameObject* pOwner);

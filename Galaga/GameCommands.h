@@ -6,7 +6,7 @@
 
 namespace dae
 {
-	class FireCommand : public GameActorCommand
+	class FireCommand final : public GameActorCommand
 	{
 	public:
 		FireCommand(GameObject* actor)
@@ -28,7 +28,7 @@ namespace dae
 		}
 	};
 
-	class MuteCommand : public GameActorCommand
+	class MuteCommand final: public GameActorCommand
 	{
 	public:
 		MuteCommand(GameObject* actor)
@@ -46,7 +46,7 @@ namespace dae
 		}
 	};
 
-	class SwitchHighScoresCommand : public GameActorCommand
+	class SwitchHighScoresCommand final: public GameActorCommand
 	{
 	public:
 		SwitchHighScoresCommand(GameObject* actor)
@@ -60,12 +60,12 @@ namespace dae
 		void Execute() override
 		{
 			auto actor = GetGameActor();
-			auto rocketlauncher = actor->GetComponent<GameComponent>();
- 			rocketlauncher->SwitchToHighScores();
+			auto comp = actor->GetComponent<GameComponent>();
+ 			comp->SwitchToHighScores();
 		}
 	};
 
-	class SkipLevelCommand : public GameActorCommand
+	class SkipLevelCommand final: public GameActorCommand
 	{
 	public:
 		SkipLevelCommand(GameObject* actor)

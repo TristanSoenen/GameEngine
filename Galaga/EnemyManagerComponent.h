@@ -5,7 +5,7 @@
 namespace dae
 {
 	class EnemyComponent;
-	class EnemyManagerComponent :public Component, Subject
+	class EnemyManagerComponent final :public Component, Subject
 	{
 	public:
 		EnemyManagerComponent(GameObject* pOwner);

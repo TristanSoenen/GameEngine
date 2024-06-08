@@ -6,7 +6,7 @@ namespace dae
 {
 	class Font;
 	class TextComponent;
-	class LivesComponent : public Component, Observer
+	class LivesComponent final: public Component, Observer
 	{
 	public:
 		LivesComponent(GameObject* pOwner, int lives, std::shared_ptr<Font> font);
