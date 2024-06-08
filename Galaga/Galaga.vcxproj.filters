@@ -22,6 +22,18 @@
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{bff92d49-1054-476f-b6ba-0eb998757cfe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{e4737ea7-0c89-47de-b241-8836178522e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Commands">
+      <UniqueIdentifier>{4b513c3d-8a2f-4eaa-ba00-384dae965cff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HelperFunctions">
+      <UniqueIdentifier>{077336f0-f8e7-4787-a434-b281af42bf79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HelperFunctions">
+      <UniqueIdentifier>{584d2fa5-11ef-435a-98ce-3ce7da31af84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Galaga.cpp">
@@ -48,20 +60,20 @@
     <ClCompile Include="GameComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyStates.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyManagerComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyStates.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
     <ClCompile Include="EnemyComponent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="HelperFunctions.cpp">
+      <Filter>Source Files\HelperFunctions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameCommands.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyStates.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -90,7 +102,13 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="EnemyComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCommands.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperFunctions.h">
+      <Filter>Header Files\HelperFunctions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
