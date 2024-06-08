@@ -8,6 +8,7 @@ class Null_Sound_System final : public Sound_System
 	void LoadSound(const std::string file) override {};
 	void Update() override {};
 	void QuitRunning() override {};
+	void Mute() override {};
 };
 
 class ServiceLocator final

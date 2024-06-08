@@ -30,5 +30,10 @@ public:
 	{
 		_real_ss->QuitRunning();
 	}
+
+	void Mute() override 
+	{
+		_real_ss->Mute();
+	}
 };
 

@@ -15,4 +15,5 @@ public:
 	virtual void Update() = 0;
 	virtual void LoadSound(const std::string file) = 0;
 	virtual void QuitRunning() = 0;
+	virtual void Mute() = 0;
 };

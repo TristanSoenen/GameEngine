@@ -2,27 +2,10 @@
 #include "Command.h"
 #include "RocketLauncher.h"
 #include "GameComponent.h"
+#include "ServiceLocator.h"
 
 namespace dae
 {
-	class RenderComponent;
-	class BossGalaga;
-	class KillCommand : public GameActorCommand
-	{
-	public:
-		KillCommand(GameObject* actor)
-			:GameActorCommand(actor)
-		{
-
-		}
-		~KillCommand() = default;
-
-		void Execute() override
-		{
-
-		}
-	};
-
 	class FireCommand : public GameActorCommand
 	{
 	public:
@@ -58,9 +41,8 @@ namespace dae
 
 		void Execute() override
 		{
-			auto actor = GetGameActor();
-			auto gameComp = actor->GetComponent<GameComponent>();
-			gameComp;
+			auto ss = ServiceLocator::get_Sound_System();
+			ss->Mute();
 		}
 	};
 }

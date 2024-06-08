@@ -19,6 +19,10 @@ public:
 
 			if (head_ != tail_)
 			{
+				if (m_Mute == true)
+				{
+					pending_[head_].volume = 0;
+				}
 				Mix_Volume(-1, int(pending_[head_].volume));
 				Mix_PlayChannel(1, m_Sounds[int(pending_[head_].id)], 0);
 				head_ = (head_ + 1) % MAX_PENDING;
@@ -31,6 +35,18 @@ public:
 		m_ProgramRunning = false;
 	}
 
+	void Mute()
+	{
+		if (m_Mute == false)
+		{
+			m_Mute = true;
+		}
+		else
+		{
+			m_Mute = false;
+		}
+	}
+
 	void LoadSound(const std::string file);
 private:
 	std::vector<Mix_Chunk*> m_Sounds;
@@ -40,6 +56,7 @@ private:
 	int head_ = 0;
 	int tail_ = 0;
 	bool m_ProgramRunning = true;
+	bool m_Mute = false;
 	std::mutex m_mutex;
 };
 
@@ -114,4 +131,9 @@ void SDL_Sound_System::Update()
 void SDL_Sound_System::QuitRunning()
 {
 	m_Soundimpl->QuitRunning();
+}
+
+void SDL_Sound_System::Mute()
+{
+	m_Soundimpl->Mute();
 }

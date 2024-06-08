@@ -11,6 +11,7 @@ public:
 	void Update() override;
 	void LoadSound(const std::string file) override;
 	void QuitRunning() override;
+	void Mute() override;
 private:
 	class Soundimpl;
 	std::unique_ptr<Soundimpl> m_Soundimpl;
