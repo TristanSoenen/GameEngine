@@ -79,3 +79,8 @@ void dae::EnemyManagerComponent::AddEnemy(dae::EnemyComponent* enemy)
 {
 	m_Enemies.emplace_back(enemy);
 }
+
+void dae::EnemyManagerComponent::RemoveAllEnemies()
+{
+	m_Enemies.clear();
+}

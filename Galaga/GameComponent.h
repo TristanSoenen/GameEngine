@@ -20,6 +20,7 @@ namespace dae
 				m_GoToHighScoreLevel = true;
 			}
 		}
+		void SkipLevel();
 	private:
 		void CreateLevel(std::string beeFile, std::string butterflyFile, std::string bossFile, int levelidx);
 		void CreateShotSFiredLevel();

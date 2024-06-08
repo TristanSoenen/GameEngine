@@ -30,7 +30,7 @@ void dae::GameComponent::Notify(Event event)
 		break;
 	case LEVEL_COMPLETE:
 		if (m_CurrentLevel == 2) CreateShotSFiredLevel();
-		if (m_CurrentLevel == 1) CreateLevel("../Data/Formation3Bees.txt", "../Data/Formation3Butterflies.txt", "../Data/Formation3Boss.txt", 2);;
+		if (m_CurrentLevel == 1) CreateLevel("../Data/Formation3Bees.txt", "../Data/Formation3Butterflies.txt", "../Data/Formation3Boss.txt", 2);
 		if (m_CurrentLevel == 0) CreateLevel("../Data/Formation2Bees.txt", "../Data/Formation2Butterflies.txt", "../Data/Formation2Boss.txt", 1);
 		break;
 	}
@@ -232,4 +232,37 @@ void dae::GameComponent::CreateScoreBoard()
 	}	
 
 	dae::SceneManager::GetInstance().SetCurrentScene(4);
+}
+
+void dae::GameComponent::SkipLevel()
+{
+	if (m_CurrentLevel < 2)
+	{
+		auto scene = dae::SceneManager::GetInstance().GetCurrentScene();
+		auto currentscenegameObjects = scene->GetAllObjects();
+		for (auto& currentSceneGameObject : currentscenegameObjects)
+		{
+			if (currentSceneGameObject->GetComponent<dae::EnemyComponent>() != nullptr)
+			{
+				currentSceneGameObject->MarkForDead();
+			}
+			if(currentSceneGameObject->GetComponent<dae::EnemyManagerComponent>() != nullptr)
+			{
+				currentSceneGameObject->GetComponent<dae::EnemyManagerComponent>()->RemoveAllEnemies();
+			}
+		}
+	}
+	if (m_CurrentLevel == 2)
+	{
+		CreateShotSFiredLevel();
+	}
+	if (m_CurrentLevel == 1)
+	{
+		CreateLevel("../Data/Formation3Bees.txt", "../Data/Formation3Butterflies.txt", "../Data/Formation3Boss.txt", 2);
+	}
+	if (m_CurrentLevel == 0)
+	{
+		CreateLevel("../Data/Formation2Bees.txt", "../Data/Formation2Butterflies.txt", "../Data/Formation2Boss.txt", 1);
+	}
+
 }

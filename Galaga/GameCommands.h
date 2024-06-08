@@ -64,4 +64,23 @@ namespace dae
  			rocketlauncher->SwitchToHighScores();
 		}
 	};
+
+	class SkipLevelCommand : public GameActorCommand
+	{
+	public:
+		SkipLevelCommand(GameObject* actor)
+			:GameActorCommand(actor)
+		{
+
+		}
+
+		~SkipLevelCommand() = default;
+
+		void Execute() override
+		{
+			auto actor = GetGameActor();
+			auto comp = actor->GetComponent<GameComponent>();
+			comp->SkipLevel();
+		}
+	};
 }

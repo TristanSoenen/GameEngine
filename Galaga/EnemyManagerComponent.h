@@ -14,6 +14,7 @@ namespace dae
 		void AllEnemiesInPosition(bool value);
 		void AddEnemy(EnemyComponent* enemy);
 		void RemoveEnemy(EnemyComponent* enemy);
+		void RemoveAllEnemies();
 		void AddObserverToEnemyManager(Observer* obs) { AddObserver(obs); };
 		
 	private:
