@@ -17,7 +17,7 @@ namespace dae
 
 		void ChangeState(std::unique_ptr<EnemyState> state)
 		{
-			//Chat gpt helped with this function will change it later.
+			//Chat gpt helped with this function 
 			m_CurrentState->OnExit();
 			m_CurrentState = std::move(state);
 			m_CurrentState->OnEnter();

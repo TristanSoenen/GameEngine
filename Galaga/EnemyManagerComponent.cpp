@@ -12,6 +12,17 @@ dae::EnemyManagerComponent::EnemyManagerComponent(dae::GameObject* pOwner)
 
 void dae::EnemyManagerComponent::Update()
 {
+	if (m_Enemies.size() == 0)
+	{
+		dae::Event notifyEvent{};
+		notifyEvent.type = LEVEL_COMPLETE;
+		NotifyObservers(notifyEvent);
+	}
+	else
+	{
+		m_NoEnemies = false;
+	}
+
 	for (auto& enemy : m_Enemies)
 	{
 		if (enemy->GetInPositions() == false)

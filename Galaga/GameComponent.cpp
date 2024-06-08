@@ -19,6 +19,9 @@ void dae::GameComponent::Notify(Event event)
 	case FIRED:
 		++m_TotalShotsFired;
 		break;
+	case LEVEL_COMPLETE:
+		std::cout << "loadNewLevel";
+		break;
 	}
 }
 
