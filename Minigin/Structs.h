@@ -26,7 +26,7 @@ namespace dae
 		DPAD_LEFT = 0x0004,
 		DPAD_RIGHT = 0x0008,
 		GAMEPAD_A = 0x1000,
-		GAMEPAD_X = 0x4000
+		GAMEPAD_B = 0x2000
 	};
 
 	struct Event

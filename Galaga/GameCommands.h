@@ -45,4 +45,42 @@ namespace dae
 			ss->Mute();
 		}
 	};
+
+	class SwitchHighScoresCommand : public GameActorCommand
+	{
+	public:
+		SwitchHighScoresCommand(GameObject* actor)
+			:GameActorCommand(actor)
+		{
+
+		}
+
+		~SwitchHighScoresCommand() = default;
+
+		void Execute() override
+		{
+			auto actor = GetGameActor();
+			auto rocketlauncher = actor->GetComponent<GameComponent>();
+ 			rocketlauncher->SwitchToHighScores();
+		}
+	};
+
+	class ResetCommand : public GameActorCommand
+	{
+	public:
+		ResetCommand(GameObject* actor)
+			:GameActorCommand(actor)
+		{
+
+		}
+
+		~ResetCommand() = default;
+
+		void Execute() override
+		{
+			auto actor = GetGameActor();
+			auto rocketlauncher = actor->GetComponent<GameComponent>();
+			rocketlauncher->SwitchToHighScores();
+		}
+	};
 }

@@ -36,6 +36,18 @@ void dae::GameComponent::Notify(Event event)
 	}
 }
 
+void dae::GameComponent::Update()
+{
+	if (m_ShowResults == true)
+	{
+		if (m_GoToHighScoreLevel == true)
+		{
+			CreateScoreBoard();
+			m_ShowResults = false;
+		}
+	}
+}
+
 void dae::GameComponent::CreateLevel(std::string beeFile, std::string butterflyFile, std::string bossFile, int levelidx)
 {
 	auto scene = dae::SceneManager::GetInstance().GetCurrentScene();
@@ -152,6 +164,11 @@ void dae::GameComponent::CreateShotSFiredLevel()
 		{
 			nextScene->Add(currentSceneGameObject);
 		}
+
+		if (currentSceneGameObject->GetComponent<dae::GameComponent>() != nullptr)
+		{
+			nextScene->Add(currentSceneGameObject);
+		}
 	}
 
 	auto font = dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 50);
@@ -173,9 +190,40 @@ void dae::GameComponent::CreateShotSFiredLevel()
 		percentage = int(float(m_Hits) / float(m_TotalShotsFired) * 100);
 	}
 	auto text4 = std::make_shared<dae::GameObject>();
-	text4->AddComponent(std::make_shared<dae::TextComponent>(text4.get(), "HITMISRATIO: %" + std::to_string(percentage), font));
+	text4->AddComponent(std::make_shared<dae::TextComponent>(text4.get(), "HITMISSRATIO: %" + std::to_string(percentage), font));
 	text4->SetPosition(10, 250);
 	nextScene->Add(text4);
-
+	m_ShowResults = true;
 	dae::SceneManager::GetInstance().SetCurrentScene(3);
+}
+
+void dae::GameComponent::CreateScoreBoard()
+{
+	auto scene = dae::SceneManager::GetInstance().GetCurrentScene();
+	auto currentscenegameObjects = scene->GetAllObjects();
+	auto nextScene = dae::SceneManager::GetInstance().GetSceneAtIndex(4);
+	for (auto& currentSceneGameObject : currentscenegameObjects)
+	{
+		if (currentSceneGameObject->GetComponent<dae::BackGround>() != nullptr)
+		{
+			nextScene->Add(currentSceneGameObject);
+		}
+	}
+
+	auto font = dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 35);
+	auto text1 = std::make_shared<dae::GameObject>();
+	text1->AddComponent(std::make_shared<dae::TextComponent>(text1.get(), "--Highscores--", font));
+	text1->SetPosition(100, 50);
+	nextScene->Add(text1);
+	std::vector<std::string> highscores;
+	ReadHighscores(highscores, "../Data/highscores.txt");
+	for (int i = 0; i < int(highscores.size()); i++)
+	{
+		auto text = std::make_shared<dae::GameObject>();
+		text->AddComponent(std::make_shared<dae::TextComponent>(text.get(), highscores[i], font));
+		text->SetPosition(10, 100 + 50.0f * i);
+		nextScene->Add(text);
+	}	
+
+	dae::SceneManager::GetInstance().SetCurrentScene(4);
 }

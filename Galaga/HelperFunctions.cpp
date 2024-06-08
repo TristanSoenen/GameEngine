@@ -36,6 +36,20 @@ void ReadPositions(std::vector<glm::vec2>& positions, std::string filename)
 	}
 }
 
+void ReadHighscores(std::vector<std::string>& vecStrings, std::string highscoreFile)
+{
+	std::ifstream file(highscoreFile);
+	if (!file.is_open()) {
+		std::cerr << "Error: Could not open the file!" << std::endl;
+	}
+
+	std::string line;
+	while (std::getline(file, line))
+	{
+		vecStrings.emplace_back(line);
+	}
+}
+
 //!!!!!!!!!!!!This function Comes from chat gpt!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 std::vector<glm::vec2> generateCirclePoints(double cx, double cy, double radius, int numPoints, double startAngleDeg, bool clockwise)
 {
